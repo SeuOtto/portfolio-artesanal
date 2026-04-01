@@ -1,0 +1,727 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<!-- ============================================================
+  METADADOS DA RECEITA — preencher antes de publicar
+  Esses dados são lidos automaticamente para gerar os cards
+  nas páginas de categoria e no índice.
+============================================================ -->
+<meta name="receita-categoria"        content="CATEGORIA">
+<meta name="receita-slug"             content="SLUG-DA-RECEITA">
+<meta name="receita-nome"             content="NOME DA RECEITA">
+<meta name="receita-subtitulo"        content="SUBTÍTULO OU TÉCNICA">
+<meta name="receita-descricao"        content="Descrição curta — 1 linha para o card da categoria.">
+<meta name="receita-rendimento"       content="000ml">
+<meta name="receita-abv"              content="00%">
+<meta name="receita-stat1-valor"      content="VALOR">
+<meta name="receita-stat1-label"      content="LABEL">
+<meta name="receita-stat2-valor"      content="VALOR">
+<meta name="receita-stat2-label"      content="LABEL">
+<meta name="receita-stat3-valor"      content="VALOR">
+<meta name="receita-stat3-label"      content="LABEL">
+<meta name="receita-stat4-valor"      content="VALOR">
+<meta name="receita-stat4-label"      content="LABEL">
+<meta name="receita-nome-cientifico"  content="Nome científico (se aplicável)">
+<meta name="receita-destaque"         content="false">
+
+<title>NOME DA RECEITA — Portfólio Artesanal</title>
+
+<!-- ============================================================
+  FONTES — Gambetta + Satoshi via Fontshare
+  Em produção: substituir pelo caminho local /assets/fonts/
+============================================================ -->
+<style>
+@import url('https://api.fontshare.com/v2/css?f[]=gambetta@300,400,600,300i,400i,600i&f[]=satoshi@300,400,500&display=swap');
+
+/* ============================================================
+  TOKENS — Dark Mode (receitas)
+  Categoria: alterar apenas os valores de --accent-*
+  conforme a paleta definida no ds-portfolio-artesanal.md
+============================================================ */
+:root {
+  /* FUNDO */
+  --bg:               #1C2B1A;
+  --bg-surface:       rgba(255,255,255,0.03);
+  --bg-surface-hover: rgba(255,255,255,0.056);
+
+  /* TEXTO */
+  --text-primary:     #F5F0E8;
+  --text-secondary:   rgba(245,240,232,0.72);
+  --text-muted:       rgba(245,240,232,0.45);
+  --text-hint:        rgba(245,240,232,0.38);
+
+  /* BORDAS */
+  --border-default:   rgba(201,168,76,0.25);
+  --border-emphasis:  rgba(201,168,76,0.50);
+  --border-subtle:    rgba(245,240,232,0.08);
+
+  /* ACENTO — TROCAR CONFORME CATEGORIA
+     Categoria 1 Licores:          #C9A84C / #E8D5A3
+     Categoria 2 Bitters e Amaros: #A0622A / #D4A574
+     Categoria 3 Cordiais:         #C4632A / #E8A882
+     Categoria 4 Xaropes:          #6A9E52 / #A8CC90
+     Categoria 5 Vermutes:         #8B3A5A / #C48DAA
+     Categoria 6 Fermentados:      #7A8C5A / #B0C494
+     Categoria 7 Extratos:         #6B5A8A / #A898C8
+     Categoria 8 Drinks:           #3A7A8A / #80C0CC
+     Categoria 9 Refrigerantes:    #4A9A7A / #88CCB4
+  */
+  --accent-primary:   #C9A84C;
+  --accent-light:     #E8D5A3;
+  --accent-border:    rgba(201,168,76,0.50);
+  --accent-bg:        rgba(201,168,76,0.08);
+}
+
+/* ── RESET ── */
+* { margin: 0; padding: 0; box-sizing: border-box; }
+
+/* ── BASE ── */
+body {
+  background: var(--bg);
+  font-family: 'Satoshi', 'Helvetica Neue', sans-serif;
+  color: var(--text-primary);
+  min-height: 100vh;
+}
+
+.page {
+  max-width: 860px;
+  margin: 0 auto;
+  padding: 0 24px 80px;
+}
+
+/* ── ANIMAÇÃO (hero + stats row apenas) ── */
+@keyframes fadeUp {
+  from { opacity: 0; transform: translateY(16px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+/* ── HERO ── */
+.hero {
+  padding: 64px 0 48px;
+  display: grid;
+  grid-template-columns: 1fr auto;
+  align-items: end;
+  gap: 32px;
+  border-bottom: 1px solid var(--border-default);
+  margin-bottom: 56px;
+  animation: fadeUp 0.8s ease both;
+}
+
+.hero-label {
+  font-size: 10px;
+  font-weight: 500;
+  letter-spacing: 0.25em;
+  text-transform: uppercase;
+  color: var(--accent-primary);
+  margin-bottom: 16px;
+}
+
+.hero h1 {
+  font-family: 'Gambetta', 'Georgia', serif;
+  font-size: clamp(38px, 6vw, 58px);
+  font-weight: 300;
+  line-height: 1.05;
+  color: var(--text-primary);
+  letter-spacing: -0.02em;
+}
+
+.hero h1 em {
+  font-style: italic;
+  color: var(--accent-light);
+}
+
+.hero-sub {
+  font-family: 'Satoshi', 'Helvetica Neue', sans-serif;
+  font-size: 13px;
+  font-weight: 300;
+  color: var(--text-muted);
+  margin-top: 16px;
+  line-height: 1.65;
+  max-width: 420px;
+}
+
+.hero-badge {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 4px;
+  background: var(--accent-bg);
+  border: 1px solid var(--border-default);
+  border-radius: 16px;
+  padding: 24px;
+  white-space: nowrap;
+  flex-shrink: 0;
+}
+
+.badge-num {
+  font-family: 'Gambetta', 'Georgia', serif;
+  font-size: 40px;
+  font-weight: 300;
+  color: var(--accent-primary);
+  line-height: 1;
+}
+
+.badge-label {
+  font-size: 10px;
+  font-weight: 400;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: var(--text-hint);
+  margin-top: 4px;
+}
+
+/* ── STATS ROW ── */
+.stats {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 1px;
+  background: var(--border-default);
+  border: 1px solid var(--border-default);
+  border-radius: 16px;
+  overflow: hidden;
+  margin-bottom: 56px;
+  animation: fadeUp 0.8s 0.1s ease both;
+}
+
+.stat {
+  background: rgba(255,255,255,0.025);
+  padding: 16px;
+  text-align: center;
+}
+
+.stat-value {
+  font-family: 'Gambetta', 'Georgia', serif;
+  font-size: 24px;
+  font-weight: 400;
+  color: var(--accent-light);
+  line-height: 1;
+  margin-bottom: 6px;
+}
+
+.stat-label {
+  font-size: 10px;
+  font-weight: 500;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--text-hint);
+}
+
+/* ── SEÇÃO ── */
+.section {
+  margin-bottom: 56px;
+}
+
+.section-header {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  margin-bottom: 32px;
+}
+
+.section-marker {
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  background: var(--accent-primary);
+  color: var(--bg);
+  font-size: 11px;
+  font-weight: 500;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  font-family: 'Satoshi', sans-serif;
+}
+
+.section-title {
+  font-family: 'Gambetta', 'Georgia', serif;
+  font-size: 26px;
+  font-weight: 400;
+  color: var(--text-primary);
+  letter-spacing: 0.01em;
+}
+
+.section-line {
+  flex: 1;
+  height: 1px;
+  background: var(--border-default);
+}
+
+/* ── INGREDIENTES ── */
+.ingredients-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 8px;
+}
+
+.ing-card {
+  background: var(--bg-surface);
+  border: 1px solid var(--border-default);
+  border-radius: 8px;
+  padding: 16px;
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  transition: background 0.2s;
+}
+
+.ing-card:hover { background: var(--bg-surface-hover); }
+
+.ing-card.highlight {
+  border-color: var(--accent-border);
+  background: var(--accent-bg);
+  grid-column: 1 / -1;
+}
+
+.ing-dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: var(--accent-primary);
+  flex-shrink: 0;
+}
+
+.ing-amount {
+  font-family: 'Gambetta', 'Georgia', serif;
+  font-size: 20px;
+  font-weight: 400;
+  color: var(--accent-light);
+  line-height: 1;
+  min-width: 56px;
+  flex-shrink: 0;
+}
+
+.ing-name {
+  font-size: 13px;
+  font-weight: 500;
+  color: var(--text-primary);
+  line-height: 1.3;
+}
+
+.ing-note {
+  font-size: 11px;
+  font-weight: 400;
+  color: var(--text-muted);
+  margin-top: 2px;
+}
+
+/* ── STEPS ── */
+.steps { display: flex; flex-direction: column; }
+
+.step {
+  display: grid;
+  grid-template-columns: 48px 1fr;
+  position: relative;
+}
+
+.step:not(:last-child) .step-line {
+  position: absolute;
+  left: 24px;
+  top: 40px;
+  bottom: 0;
+  width: 2px;
+  background: var(--border-default);
+}
+
+.step-left {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding-top: 4px;
+  position: relative;
+  z-index: 1;
+}
+
+.step-circle {
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  border: 2px solid var(--accent-primary);
+  background: var(--bg);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: 'Satoshi', 'Helvetica Neue', sans-serif;
+  font-size: 13px;
+  font-weight: 500;
+  line-height: 1;
+  color: var(--accent-primary);
+  flex-shrink: 0;
+  user-select: none;
+}
+
+.step-right { padding: 2px 0 40px 16px; }
+
+.step-title {
+  font-family: 'Gambetta', 'Georgia', serif;
+  font-size: 18px;
+  font-weight: 600;
+  color: var(--text-primary);
+  margin-bottom: 8px;
+  line-height: 1.2;
+}
+
+.step-body {
+  font-size: 14px;
+  font-weight: 300;
+  color: var(--text-secondary);
+  line-height: 1.75;
+}
+
+.step-body strong {
+  color: var(--accent-light);
+  font-weight: 500;
+}
+
+.step-tag {
+  display: inline-block;
+  background: var(--accent-bg);
+  border: 1px solid var(--accent-border);
+  color: var(--accent-light);
+  font-size: 10px;
+  font-weight: 500;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  padding: 4px 8px;
+  border-radius: 4px;
+  margin-top: 10px;
+}
+
+/* ── TABELA ── */
+.timing-table {
+  width: 100%;
+  border-collapse: collapse;
+  border: 1px solid var(--border-default);
+  border-radius: 8px;
+  overflow: hidden;
+}
+
+.timing-table thead tr { background: var(--accent-bg); }
+
+.timing-table th {
+  font-size: 10px;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--accent-primary);
+  font-weight: 500;
+  padding: 16px;
+  text-align: left;
+}
+
+.timing-table td {
+  font-size: 13px;
+  color: var(--text-secondary);
+  padding: 16px;
+  border-top: 1px solid var(--border-default);
+}
+
+.timing-table td:first-child {
+  font-weight: 500;
+  color: var(--text-primary);
+}
+
+.timing-table tr:hover td { background: rgba(201,168,76,0.04); }
+
+/* ── NOTAS TÉCNICAS ── */
+.notes-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 8px;
+}
+
+.note-card {
+  background: var(--bg-surface);
+  border: 1px solid var(--border-default);
+  border-radius: 8px;
+  padding: 16px;
+}
+
+.note-card.warn {
+  border-color: rgba(201,168,76,0.45);
+  background: rgba(201,168,76,0.05);
+}
+
+.note-icon { font-size: 16px; margin-bottom: 8px; }
+
+.note-title {
+  font-size: 11px;
+  font-weight: 500;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--accent-primary);
+  margin-bottom: 6px;
+}
+
+.note-body {
+  font-size: 12px;
+  font-weight: 300;
+  color: var(--text-muted);
+  line-height: 1.65;
+}
+
+/* ── FOOTER ── */
+.page-footer {
+  border-top: 1px solid var(--border-default);
+  padding-top: 32px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 8px;
+}
+
+.footer-text {
+  font-size: 11px;
+  color: var(--text-hint);
+  letter-spacing: 0.08em;
+}
+
+.footer-sig {
+  font-family: 'Gambetta', 'Georgia', serif;
+  font-size: 14px;
+  font-style: italic;
+  color: rgba(201,168,76,0.50);
+}
+
+/* ── RESPONSIVIDADE ── */
+@media (max-width: 600px) {
+  .hero { grid-template-columns: 1fr; }
+  .hero-badge { display: none; }
+  .stats { grid-template-columns: repeat(2, 1fr); }
+  .ingredients-grid { grid-template-columns: 1fr; }
+  .ing-card.highlight { grid-column: 1; }
+  .notes-grid { grid-template-columns: 1fr; }
+}
+</style>
+</head>
+<body>
+<div class="page">
+
+  <!-- ============================================================
+    HERO
+    - hero-label: "Categoria · Subcategoria" (ex: Licor · Floral)
+    - h1: primeira linha normal, segunda linha em <em> itálico
+    - hero-sub: descrição técnica curta (1–2 linhas)
+    - badge-num: rendimento final (ex: 750ml)
+  ============================================================ -->
+  <header class="hero">
+    <div>
+      <div class="hero-label">CATEGORIA · SUBCATEGORIA</div>
+      <h1>Nome da<br><em>Receita</em></h1>
+      <p class="hero-sub">Descrição técnica curta — o que é, como foi feito, contexto.</p>
+    </div>
+    <div class="hero-badge">
+      <span class="badge-num">000ml</span>
+      <span class="badge-label">Rendimento</span>
+    </div>
+  </header>
+
+  <!-- ============================================================
+    STATS ROW — 4 slots livres
+    Regra: os 4 números que o bartender precisa antes de começar.
+    Valores curtos. Labels máximo 2 palavras.
+  ============================================================ -->
+  <div class="stats">
+    <div class="stat">
+      <div class="stat-value">VALOR</div>
+      <div class="stat-label">Label</div>
+    </div>
+    <div class="stat">
+      <div class="stat-value">VALOR</div>
+      <div class="stat-label">Label</div>
+    </div>
+    <div class="stat">
+      <div class="stat-value">VALOR</div>
+      <div class="stat-label">Label</div>
+    </div>
+    <div class="stat">
+      <div class="stat-value">VALOR</div>
+      <div class="stat-label">Label</div>
+    </div>
+  </div>
+
+  <!-- ============================================================
+    INGREDIENTES
+    - 1 card com classe "highlight" = ingrediente principal (full width)
+    - Demais cards: 2 por linha
+    - ing-note: nota técnica curta (opcional)
+  ============================================================ -->
+  <section class="section">
+    <div class="section-header">
+      <div class="section-marker">—</div>
+      <h2 class="section-title">Ingredientes</h2>
+      <div class="section-line"></div>
+    </div>
+
+    <div class="ingredients-grid">
+
+      <!-- INGREDIENTE PRINCIPAL — sempre primeiro, sempre highlight -->
+      <div class="ing-card highlight">
+        <div class="ing-dot"></div>
+        <div class="ing-amount">00g</div>
+        <div class="ing-info">
+          <div class="ing-name">Ingrediente principal</div>
+          <div class="ing-note">Nota técnica · informação relevante</div>
+        </div>
+      </div>
+
+      <!-- INGREDIENTES SECUNDÁRIOS -->
+      <div class="ing-card">
+        <div class="ing-dot"></div>
+        <div class="ing-amount">000ml</div>
+        <div class="ing-info">
+          <div class="ing-name">Nome do ingrediente</div>
+          <div class="ing-note">Nota técnica opcional</div>
+        </div>
+      </div>
+
+      <div class="ing-card">
+        <div class="ing-dot"></div>
+        <div class="ing-amount">00g</div>
+        <div class="ing-info">
+          <div class="ing-name">Nome do ingrediente</div>
+          <div class="ing-note">Nota técnica opcional</div>
+        </div>
+      </div>
+
+      <!-- Duplicar bloco .ing-card conforme necessário -->
+
+    </div>
+  </section>
+
+  <!-- ============================================================
+    PASSO A PASSO
+    - Cada .step = 1 passo
+    - .step-tag = alerta ou detalhe crítico (opcional por step)
+    - Último step não tem .step-line (remover a div)
+  ============================================================ -->
+  <section class="section">
+    <div class="section-header">
+      <div class="section-marker">—</div>
+      <h2 class="section-title">Passo a Passo</h2>
+      <div class="section-line"></div>
+    </div>
+
+    <div class="steps">
+
+      <div class="step">
+        <div class="step-line"></div>
+        <div class="step-left"><div class="step-circle">1</div></div>
+        <div class="step-right">
+          <div class="step-title">Título do passo</div>
+          <div class="step-body">
+            Descrição do passo. Use <strong>negrito</strong> para destacar valores, ingredientes ou ações críticas.
+          </div>
+          <div class="step-tag">⚠ alerta ou detalhe crítico</div>
+        </div>
+      </div>
+
+      <div class="step">
+        <div class="step-line"></div>
+        <div class="step-left"><div class="step-circle">2</div></div>
+        <div class="step-right">
+          <div class="step-title">Título do passo</div>
+          <div class="step-body">
+            Descrição do passo.
+          </div>
+        </div>
+      </div>
+
+      <!-- ÚLTIMO STEP — sem step-line -->
+      <div class="step">
+        <div class="step-left"><div class="step-circle">3</div></div>
+        <div class="step-right">
+          <div class="step-title">Título do passo</div>
+          <div class="step-body">
+            Descrição do passo final.
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ============================================================
+    TABELA DE ORDEM DE ADIÇÃO — opcional
+    Incluir apenas quando houver compostos com timing diferente.
+    Remover esta seção inteira se não aplicável.
+  ============================================================ -->
+  <section class="section">
+    <div class="section-header">
+      <div class="section-marker">—</div>
+      <h2 class="section-title">Ordem de Adição</h2>
+      <div class="section-line"></div>
+    </div>
+
+    <table class="timing-table">
+      <thead>
+        <tr>
+          <th>Ingrediente</th>
+          <th>Quando adicionar</th>
+          <th>Motivo</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>Ingrediente</td>
+          <td>Momento</td>
+          <td>Justificativa técnica</td>
+        </tr>
+        <!-- Duplicar <tr> conforme necessário -->
+      </tbody>
+    </table>
+  </section>
+
+  <!-- ============================================================
+    NOTAS TÉCNICAS
+    - Mínimo 2 cards
+    - Pelo menos 1 com classe "warn" quando houver risco de processo
+    - Remover .warn se não houver risco
+  ============================================================ -->
+  <section class="section">
+    <div class="section-header">
+      <div class="section-marker">—</div>
+      <h2 class="section-title">Notas Técnicas</h2>
+      <div class="section-line"></div>
+    </div>
+
+    <div class="notes-grid">
+
+      <div class="note-card warn">
+        <div class="note-icon">⚠️</div>
+        <div class="note-title">Título da nota</div>
+        <div class="note-body">Descrição da nota de atenção ou alerta de processo.</div>
+      </div>
+
+      <div class="note-card">
+        <div class="note-icon">📊</div>
+        <div class="note-title">Perfil esperado</div>
+        <div class="note-body">Descrição do perfil sensorial, cor, aroma e sabor esperados.</div>
+      </div>
+
+      <div class="note-card">
+        <div class="note-icon">🫙</div>
+        <div class="note-title">Shelf life</div>
+        <div class="note-body">Validade estimada com base em ABV, pH ou Brix. Condições de armazenamento.</div>
+      </div>
+
+      <!-- Duplicar .note-card conforme necessário -->
+
+    </div>
+  </section>
+
+  <!-- ============================================================
+    FOOTER
+    - footer-text: "Nome da receita · Categoria"
+    - footer-sig: sempre "@seuOtto" — não alterar
+  ============================================================ -->
+  <footer class="page-footer">
+    <span class="footer-text">Nome da Receita · Categoria</span>
+    <span class="footer-sig">@seuOtto</span>
+  </footer>
+
+</div>
+</body>
+</html>
