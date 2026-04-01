@@ -1,0 +1,500 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Portfólio Artesanal — Índice</title>
+<style>
+@import url('https://api.fontshare.com/v2/css?f[]=gambetta@300,400,600,300i,400i&f[]=satoshi@300,400,500&display=swap');
+
+:root {
+  --bg:           #F2F5F0;
+  --bg-surface:   #FFFFFF;
+  --bg-surface-2: #F7FAF6;
+
+  --text-primary:   #1C2B1A;
+  --text-secondary: rgba(28,43,26,0.65);
+  --text-muted:     rgba(28,43,26,0.52);
+  --text-hint:      rgba(28,43,26,0.50);
+
+  --border-default: rgba(28,43,26,0.10);
+  --border-subtle:  rgba(28,43,26,0.06);
+  --border-hover:   rgba(28,43,26,0.22);
+
+  /* acentos por categoria */
+  --cat-1: #A07830; /* Licores */
+  --cat-2: #7A4020; /* Bitters */
+  --cat-3: #9B4520; /* Cordiais */
+  --cat-4: #3E7235; /* Xaropes */
+  --cat-5: #6B2848; /* Vermutes */
+  --cat-6: #4E6030; /* Fermentados */
+  --cat-7: #4A3A6A; /* Extratos */
+  --cat-8: #1E5A6A; /* Drinks */
+  --cat-9: #2A7A5A; /* Refrigerantes */
+}
+
+* { margin: 0; padding: 0; box-sizing: border-box; }
+
+body {
+  background: var(--bg);
+  font-family: 'Satoshi', 'Helvetica Neue', sans-serif;
+  color: var(--text-primary);
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+.main-content { flex: 1; }
+
+/* ── NAV ── */
+nav {
+  background: var(--bg-surface);
+  border-bottom: 1px solid var(--border-default);
+  height: 64px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 40px;
+  position: sticky;
+  top: 0;
+  z-index: 10;
+}
+
+.nav-brand {
+  display: flex;
+  align-items: baseline;
+  gap: 12px;
+}
+
+.nav-logo {
+  font-family: 'Gambetta', 'Georgia', serif;
+  font-size: 18px;
+  font-weight: 400;
+  color: var(--text-primary);
+  letter-spacing: -0.02em;
+  text-decoration: none;
+}
+
+.nav-logo em {
+  font-style: italic;
+  color: var(--cat-1);
+}
+
+.nav-tagline {
+  font-size: 10px;
+  font-weight: 500;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--text-hint);
+}
+
+.nav-links {
+  display: flex;
+  gap: 32px;
+}
+
+.nav-link {
+  font-size: 13px;
+  font-weight: 400;
+  color: var(--text-muted);
+  text-decoration: none;
+  transition: color 0.2s;
+}
+
+.nav-link:hover,
+.nav-link.active { color: var(--text-primary); font-weight: 500; }
+
+/* ── HERO ── */
+.hero {
+  max-width: 860px;
+  margin: 0 auto;
+  padding: 72px 40px 64px;
+  display: grid;
+  grid-template-columns: 1fr auto;
+  align-items: end;
+  gap: 40px;
+  border-bottom: 1px solid var(--border-default);
+  animation: fadeUp 0.8s ease both;
+}
+
+.hero-label {
+  font-size: 10px;
+  font-weight: 500;
+  letter-spacing: 0.25em;
+  text-transform: uppercase;
+  color: var(--cat-1);
+  margin-bottom: 16px;
+}
+
+.hero-title {
+  font-family: 'Gambetta', 'Georgia', serif;
+  font-size: clamp(36px, 5vw, 56px);
+  font-weight: 300;
+  line-height: 1.05;
+  letter-spacing: -0.02em;
+  color: var(--text-primary);
+}
+
+.hero-title em {
+  font-style: italic;
+  color: var(--cat-1);
+}
+
+.hero-desc {
+  font-size: 14px;
+  font-weight: 300;
+  color: var(--text-secondary);
+  margin-top: 16px;
+  line-height: 1.7;
+  max-width: 400px;
+}
+
+.hero-counters {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  gap: 16px;
+}
+
+.counter {
+  text-align: right;
+}
+
+.counter-num {
+  font-family: 'Gambetta', 'Georgia', serif;
+  font-size: 40px;
+  font-weight: 300;
+  line-height: 1;
+  color: var(--cat-1);
+}
+
+.counter-label {
+  font-size: 10px;
+  font-weight: 500;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--text-hint);
+  margin-top: 4px;
+}
+
+/* ── GRID ── */
+.grid-wrap {
+  max-width: 860px;
+  margin: 0 auto;
+  padding: 48px 40px 80px;
+  animation: fadeUp 0.8s 0.1s ease both;
+}
+
+.grid-section-label {
+  font-size: 10px;
+  font-weight: 500;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: var(--text-hint);
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  margin-bottom: 32px;
+}
+
+.grid-section-label::after {
+  content: '';
+  flex: 1;
+  height: 1px;
+  background: var(--border-default);
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 16px;
+}
+
+/* ── CATEGORY CARD ── */
+.cat-card {
+  background: var(--bg-surface);
+  border: 1px solid var(--border-default);
+  border-radius: 12px;
+  overflow: hidden;
+  cursor: pointer;
+  text-decoration: none;
+  display: flex;
+  flex-direction: column;
+  transition: transform 0.2s, box-shadow 0.2s, border-color 0.2s;
+  color: inherit;
+}
+
+.cat-card:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 32px rgba(28,43,26,0.08);
+  border-color: var(--border-hover);
+}
+
+.cat-card-accent {
+  height: 4px;
+  width: 100%;
+  flex-shrink: 0;
+}
+
+.cat-card-body {
+  padding: 24px;
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+}
+
+.cat-card-name {
+  font-family: 'Gambetta', 'Georgia', serif;
+  font-size: 22px;
+  font-weight: 400;
+  line-height: 1.1;
+  letter-spacing: -0.01em;
+  color: var(--text-primary);
+  margin-bottom: 10px;
+}
+
+.cat-card-examples {
+  font-size: 12px;
+  font-weight: 400;
+  color: var(--text-muted);
+  line-height: 1.5;
+  flex: 1;
+}
+
+.cat-card-footer {
+  padding: 14px 24px;
+  border-top: 1px solid var(--border-subtle);
+  background: var(--bg-surface-2);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.cat-card-count {
+  font-size: 12px;
+  font-weight: 500;
+  color: var(--text-muted);
+}
+
+.cat-card-arrow {
+  font-size: 14px;
+  color: var(--text-hint);
+  transition: transform 0.2s, color 0.2s;
+}
+
+.cat-card:hover .cat-card-arrow {
+  transform: translateX(3px);
+  color: var(--text-muted);
+}
+
+/* ── FOOTER ── */
+footer {
+  border-top: 1px solid var(--border-default);
+  padding-top: 32px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.footer-text {
+  font-size: 11px;
+  color: var(--text-hint);
+  letter-spacing: 0.08em;
+}
+
+.footer-sig {
+  font-family: 'Gambetta', 'Georgia', serif;
+  font-size: 14px;
+  font-style: italic;
+  color: rgba(160,120,48,0.5);
+}
+
+/* ── ANIMATION ── */
+@keyframes fadeUp {
+  from { opacity: 0; transform: translateY(16px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+/* ── RESPONSIVE ── */
+@media (max-width: 640px) {
+  nav, .hero, .grid-wrap { padding-left: 20px; padding-right: 20px; }
+  .hero { grid-template-columns: 1fr; gap: 24px; }
+  .hero-counters { flex-direction: row; align-items: flex-end; }
+  .grid { grid-template-columns: 1fr 1fr; }
+  .nav-tagline { display: none; }
+}
+
+@media (max-width: 420px) {
+  .grid { grid-template-columns: 1fr; }
+}
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <div class="nav-brand">
+    <a href="./" class="nav-logo">Alta <em>Coquetelaria</em></a>
+    <div class="nav-tagline">Portfólio Artesanal</div>
+  </div>
+  <div class="nav-links">
+    <a href="./" class="nav-link active">Receitas</a>
+  </div>
+</nav>
+
+<main class="main-content">
+<div class="hero">
+  <div>
+    <div class="hero-label">Portfólio · Alta Coquetelaria Caseira</div>
+    <h1 class="hero-title">Insumos &amp;<br><em>Receitas</em></h1>
+    <p class="hero-desc">Receitas artesanais desenvolvidas com precisão técnica e identidade autoral. Licores, bitters, xaropes, fermentados e mais.</p>
+  </div>
+  <div class="hero-counters">
+    <div class="counter">
+      <div class="counter-num">9</div>
+      <div class="counter-label">Categorias</div>
+    </div>
+    <div class="counter">
+      <div class="counter-num">1</div>
+      <div class="counter-label">Receitas</div>
+    </div>
+  </div>
+</div>
+
+<!-- GRID -->
+<div class="grid-wrap">
+  <div class="grid-section-label">Categorias</div>
+  <div class="grid">
+
+    <!-- 1 Licores -->
+    <a href="licores/" class="cat-card">
+      <div class="cat-card-accent" style="background:var(--cat-1)"></div>
+      <div class="cat-card-body">
+        <div class="cat-card-name">Licores</div>
+        <div class="cat-card-examples">Sabugueiro · Café<br>Limoncello</div>
+      </div>
+      <div class="cat-card-footer">
+        <span class="cat-card-count">1 receita</span>
+        <span class="cat-card-arrow" style="color:var(--cat-1)">→</span>
+      </div>
+    </a>
+
+    <!-- 2 Bitters -->
+    <a href="bitters/" class="cat-card">
+      <div class="cat-card-accent" style="background:var(--cat-2)"></div>
+      <div class="cat-card-body">
+        <div class="cat-card-name">Bitters e Amaros</div>
+        <div class="cat-card-examples">Laranja · Angostura<br>Amaro caseiro</div>
+      </div>
+      <div class="cat-card-footer">
+        <span class="cat-card-count">Em breve</span>
+        <span class="cat-card-arrow" style="color:var(--cat-2)">→</span>
+      </div>
+    </a>
+
+    <!-- 3 Cordiais -->
+    <a href="cordiais/" class="cat-card">
+      <div class="cat-card-accent" style="background:var(--cat-3)"></div>
+      <div class="cat-card-body">
+        <div class="cat-card-name">Cordiais</div>
+        <div class="cat-card-examples">Maracujá · Gengibre<br>Elderflower</div>
+      </div>
+      <div class="cat-card-footer">
+        <span class="cat-card-count">Em breve</span>
+        <span class="cat-card-arrow" style="color:var(--cat-3)">→</span>
+      </div>
+    </a>
+
+    <!-- 4 Xaropes -->
+    <a href="xaropes/" class="cat-card">
+      <div class="cat-card-accent" style="background:var(--cat-4)"></div>
+      <div class="cat-card-body">
+        <div class="cat-card-name">Xaropes</div>
+        <div class="cat-card-examples">Demerara · Orgeat<br>Lavanda · Gengibre</div>
+      </div>
+      <div class="cat-card-footer">
+        <span class="cat-card-count">Em breve</span>
+        <span class="cat-card-arrow" style="color:var(--cat-4)">→</span>
+      </div>
+    </a>
+
+    <!-- 5 Vermutes -->
+    <a href="vermutes/" class="cat-card">
+      <div class="cat-card-accent" style="background:var(--cat-5)"></div>
+      <div class="cat-card-body">
+        <div class="cat-card-name">Vermutes e Aromatizados</div>
+        <div class="cat-card-examples">Branco · Tinto<br>Quinado</div>
+      </div>
+      <div class="cat-card-footer">
+        <span class="cat-card-count">Em breve</span>
+        <span class="cat-card-arrow" style="color:var(--cat-5)">→</span>
+      </div>
+    </a>
+
+    <!-- 6 Fermentados -->
+    <a href="fermentados/" class="cat-card">
+      <div class="cat-card-accent" style="background:var(--cat-6)"></div>
+      <div class="cat-card-body">
+        <div class="cat-card-name">Fermentados</div>
+        <div class="cat-card-examples">Kombucha · Lactofermentados<br>Vinagres</div>
+      </div>
+      <div class="cat-card-footer">
+        <span class="cat-card-count">Em breve</span>
+        <span class="cat-card-arrow" style="color:var(--cat-6)">→</span>
+      </div>
+    </a>
+
+    <!-- 7 Extratos -->
+    <a href="extratos/" class="cat-card">
+      <div class="cat-card-accent" style="background:var(--cat-7)"></div>
+      <div class="cat-card-body">
+        <div class="cat-card-name">Extratos</div>
+        <div class="cat-card-examples">Baunilha · Cítricos<br>Oleoresinas</div>
+      </div>
+      <div class="cat-card-footer">
+        <span class="cat-card-count">Em breve</span>
+        <span class="cat-card-arrow" style="color:var(--cat-7)">→</span>
+      </div>
+    </a>
+
+    <!-- 8 Drinks -->
+    <a href="drinks/" class="cat-card">
+      <div class="cat-card-accent" style="background:var(--cat-8)"></div>
+      <div class="cat-card-body">
+        <div class="cat-card-name">Drinks</div>
+        <div class="cat-card-examples">Autorais · Clássicos<br>Temporada</div>
+      </div>
+      <div class="cat-card-footer">
+        <span class="cat-card-count">Em breve</span>
+        <span class="cat-card-arrow" style="color:var(--cat-8)">→</span>
+      </div>
+    </a>
+
+    <!-- 9 Refrigerantes -->
+    <a href="refrigerantes/" class="cat-card">
+      <div class="cat-card-accent" style="background:var(--cat-9)"></div>
+      <div class="cat-card-body">
+        <div class="cat-card-name">Refrigerantes</div>
+        <div class="cat-card-examples">Água tônica · Ginger Ale<br>Sodas botânicas</div>
+      </div>
+      <div class="cat-card-footer">
+        <span class="cat-card-count">Em breve</span>
+        <span class="cat-card-arrow" style="color:var(--cat-9)">→</span>
+      </div>
+    </a>
+
+  </div>
+
+  <!-- FOOTER -->
+  <footer>
+    <span class="footer-text">Alta Coquetelaria Caseira · Portfólio Artesanal</span>
+    <span class="footer-sig">@seuOtto</span>
+  </footer>
+
+</div>
+
+</main>
+
+</body>
+</html>
