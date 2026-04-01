@@ -65,9 +65,76 @@ body {
   to   { opacity: 1; transform: translateY(0); }
 }
 
+/* NAV */
+nav {
+  background: rgba(255,255,255,0.03);
+  border-bottom: 1px solid var(--border-subtle);
+  height: 64px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 40px;
+  position: sticky;
+  top: 0;
+  z-index: 10;
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+}
+
+.nav-brand {
+  display: flex;
+  align-items: baseline;
+  gap: 12px;
+}
+
+.nav-logo {
+  font-family: 'Gambetta', 'Georgia', serif;
+  font-size: 18px;
+  font-weight: 400;
+  color: var(--text-primary);
+  letter-spacing: -0.02em;
+  text-decoration: none;
+}
+
+.nav-logo em {
+  font-style: italic;
+  color: var(--accent-primary);
+}
+
+.nav-tagline {
+  font-size: 10px;
+  font-weight: 500;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--text-hint);
+}
+
+.nav-links {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 12px;
+  color: var(--text-muted);
+}
+
+.nav-link {
+  color: var(--text-muted);
+  text-decoration: none;
+  transition: color 0.2s;
+}
+
+.nav-link:hover { color: var(--text-primary); }
+
+.nav-sep { color: var(--text-hint); }
+
+.nav-current {
+  color: var(--accent-primary);
+  font-weight: 500;
+}
+
 /* HERO */
 .hero {
-  padding: 64px 0 48px;
+  padding: 48px 0 48px;
   display: grid;
   grid-template-columns: 1fr auto;
   align-items: end;
@@ -450,6 +517,12 @@ body {
 
 /* RESPONSIVIDADE */
 @media (max-width: 600px) {
+  nav { padding: 0 20px; }
+  .nav-tagline { display: none; }
+  .nav-sep, .nav-current { display: none; }
+  .nav-links { gap: 0; }
+  .nav-link-categoria { display: none; }
+  .nav-link-inicio::before { content: '← '; }
   .hero { grid-template-columns: 1fr; }
   .hero-badge { display: none; }
   .stats { grid-template-columns: repeat(2, 1fr); }
@@ -460,6 +533,22 @@ body {
 </style>
 </head>
 <body>
+
+<!-- NAV -->
+<nav>
+  <div class="nav-brand">
+    <a href="../" class="nav-logo">Alta <em>Coquetelaria</em></a>
+    <div class="nav-tagline">Portfólio Artesanal</div>
+  </div>
+  <div class="nav-links">
+    <a href="../" class="nav-link nav-link-inicio">Início</a>
+    <span class="nav-sep">›</span>
+    <a href="./" class="nav-link nav-link-categoria">Licores</a>
+    <span class="nav-sep">›</span>
+    <span class="nav-current">Flor de Sabugueiro</span>
+  </div>
+</nav>
+
 <div class="page">
 
   <header class="hero">
