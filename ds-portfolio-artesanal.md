@@ -600,3 +600,86 @@ Duração padrão: `0.8s ease both`
 ---
 
 *Design System — Portfólio Alta Coquetelaria Caseira*
+
+---
+
+## 13. Módulos opcionais — lógica de uso
+
+O template base é modular. O núcleo visual é fixo; o conteúdo é variável.
+A consistência vem dos tokens e da tipografia — não de todas as receitas
+terem as mesmas seções.
+
+### Núcleo fixo — presente em toda receita
+
+Nav · Hero · Stats row · Ingredientes · Método · Notas técnicas · Footer
+
+### Stats row — número de slots
+
+| Slots | Classe CSS | Quando usar |
+|---|---|---|
+| 2 | `stats-2col` | Receitas simples, poucos parâmetros relevantes |
+| 3 | `stats-3col` | Exatamente 3 métricas significativas |
+| 4 | _(padrão)_ | Receitas complexas com 4 métricas reais |
+
+Nunca inventar métricas para preencher slots. Nunca deixar slot vazio no HTML.
+
+### Grid de ingredientes — variantes
+
+| Variante | Classe CSS | Quando usar |
+|---|---|---|
+| 1 coluna | `ingredients-grid-1col` | ≤ 4 ingredientes |
+| 2 colunas | _(padrão)_ | ≥ 5 ingredientes |
+| Com fases | `.ingredients-phase` como separador | Timing radicalmente diferente entre grupos |
+
+`.ingredients-phase` ocupa `grid-column: 1 / -1` e não é um card de ingrediente.
+
+### Método — simples vs. passo a passo
+
+| Componente | Classe CSS | Quando usar |
+|---|---|---|
+| Método simples | `.method-block` | Processo direto, 1–2 etapas sem parâmetros distintos |
+| Passo a passo | `.steps` | 3+ etapas com ações ou parâmetros diferentes |
+
+Nunca usar os dois ao mesmo tempo.
+
+### Tabela de dados — quando incluir
+
+Incluir apenas em um destes casos:
+1. **Ordem de adição** — 2+ ingredientes com timing crítico diferente
+2. **Parâmetros técnicos** — Brix, pH, sorbato, temperatura
+
+Omitir nos demais casos. Nunca criar a seção vazia.
+Componente CSS: `.data-table` (mesmo estilo para ambos os casos).
+
+### Notas técnicas — quantidade mínima
+
+| Situação | Mínimo |
+|---|---|
+| Receita simples, sem risco | 1 nota (shelf life) |
+| Receita com risco de processo | 2 notas (1 warn + shelf life) |
+| Receita complexa | 2–4 conforme conteúdo real |
+
+`.warn` apenas quando há risco real. Não usar para recomendações.
+
+### Bloco de fonte/crédito — `.source-block`
+
+Incluir quando a receita tem origem externa documentada.
+Omitir completamente em receitas autorais.
+
+### Hero badge — rendimento fixo vs. variável
+
+| Situação | Ação |
+|---|---|
+| Rendimento fixo | Exibir `.hero-badge` normalmente |
+| Rendimento variável / proporcional | Omitir `.hero-badge`; mencionar em nota |
+
+### O que nunca fazer com os módulos
+
+| Proibido | Motivo |
+|---|---|
+| Método simples + passo a passo juntos | Redundância |
+| Tabela vazia | Quebra a lógica visual |
+| Inventar métricas para 4 slots | Perde credibilidade |
+| `.warn` em recomendações | Desvaloriza alertas reais |
+| Fonte/crédito em receita autoral | Contradiz identidade autoral |
+| Omitir shelf life em insumos armazenáveis | Informação técnica obrigatória |
