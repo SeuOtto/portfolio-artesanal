@@ -8,19 +8,16 @@
 @import url('https://api.fontshare.com/v2/css?f[]=gambetta@300,400,600,300i,400i&f[]=satoshi@300,400,500&display=swap');
 
 :root {
-  --bg:           #F2F5F0;
-  --bg-surface:   #FFFFFF;
+  --bg: #F2F5F0;
+  --bg-surface: #FFFFFF;
   --bg-surface-2: #F7FAF6;
-
-  --text-primary:   #1C2B1A;
+  --text-primary: #1C2B1A;
   --text-secondary: rgba(28,43,26,0.65);
-  --text-muted:     rgba(28,43,26,0.52);
-  --text-hint:      rgba(28,43,26,0.50);
-
+  --text-muted: rgba(28,43,26,0.52);
+  --text-hint: rgba(28,43,26,0.50);
   --border-default: rgba(28,43,26,0.10);
-  --border-subtle:  rgba(28,43,26,0.06);
-  --border-hover:   rgba(28,43,26,0.22);
-
+  --border-subtle: rgba(28,43,26,0.06);
+  --border-hover: rgba(28,43,26,0.22);
   /* acentos por categoria */
   --cat-1: #A07830; /* Licores */
   --cat-2: #7A4020; /* Bitters */
@@ -328,6 +325,7 @@ footer {
 @media (max-width: 420px) {
   .grid { grid-template-columns: 1fr; }
 }
+
 </style>
 </head>
 <body>
@@ -344,156 +342,156 @@ footer {
 </nav>
 
 <main class="main-content">
-<div class="hero">
-  <div>
-    <div class="hero-label">Portfólio · Alta Coquetelaria Caseira</div>
-    <h1 class="hero-title">Insumos &amp;<br><em>Receitas</em></h1>
-    <p class="hero-desc">Receitas artesanais desenvolvidas com precisão técnica e identidade autoral. Licores, bitters, xaropes, fermentados e mais.</p>
-  </div>
-  <div class="hero-counters">
-    <div class="counter">
-      <div class="counter-num">9</div>
-      <div class="counter-label">Categorias</div>
+
+  <div class="hero">
+    <div>
+      <div class="hero-label">Portfólio · Alta Coquetelaria Caseira</div>
+      <h1 class="hero-title">Insumos &amp;<br><em>Receitas</em></h1>
+      <p class="hero-desc">Receitas artesanais desenvolvidas com precisão técnica e identidade autoral. Licores, bitters, xaropes, fermentados e mais.</p>
     </div>
-    <div class="counter">
-      <div class="counter-num">2</div>
-      <div class="counter-label">Receitas</div>
+    <div class="hero-counters">
+      <div class="counter">
+        <div class="counter-num">9</div>
+        <div class="counter-label">Categorias</div>
+      </div>
+      <div class="counter">
+        <div class="counter-num">3</div>
+        <div class="counter-label">Receitas</div>
+      </div>
     </div>
   </div>
-</div>
 
-<!-- GRID -->
-<div class="grid-wrap">
-  <div class="grid-section-label">Categorias</div>
-  <div class="grid">
+  <!-- GRID -->
+  <div class="grid-wrap">
+    <div class="grid-section-label">Categorias</div>
+    <div class="grid">
 
-    <!-- 1 Licores -->
-    <a href="licores/" class="cat-card">
-      <div class="cat-card-accent" style="background:var(--cat-1)"></div>
-      <div class="cat-card-body">
-        <div class="cat-card-name">Licores</div>
-        <div class="cat-card-examples">Sabugueiro · Café<br>Limoncello</div>
-      </div>
-      <div class="cat-card-footer">
-        <span class="cat-card-count">2 receitas</span>
-        <span class="cat-card-arrow" style="color:var(--cat-1)">→</span>
-      </div>
-    </a>
+      <!-- 1 Licores -->
+      <a href="licores/" class="cat-card">
+        <div class="cat-card-accent" style="background:var(--cat-1)"></div>
+        <div class="cat-card-body">
+          <div class="cat-card-name">Licores</div>
+          <div class="cat-card-examples">Sabugueiro · Café<br>Limoncello</div>
+        </div>
+        <div class="cat-card-footer">
+          <span class="cat-card-count">2 receitas</span>
+          <span class="cat-card-arrow" style="color:var(--cat-1)">→</span>
+        </div>
+      </a>
 
-    <!-- 2 Bitters -->
-    <a href="bitters/" class="cat-card">
-      <div class="cat-card-accent" style="background:var(--cat-2)"></div>
-      <div class="cat-card-body">
-        <div class="cat-card-name">Bitters e Amaros</div>
-        <div class="cat-card-examples">Laranja · Angostura<br>Amaro caseiro</div>
-      </div>
-      <div class="cat-card-footer">
-        <span class="cat-card-count">Em breve</span>
-        <span class="cat-card-arrow" style="color:var(--cat-2)">→</span>
-      </div>
-    </a>
+      <!-- 2 Bitters -->
+      <a href="bitters/" class="cat-card">
+        <div class="cat-card-accent" style="background:var(--cat-2)"></div>
+        <div class="cat-card-body">
+          <div class="cat-card-name">Bitters e Amaros</div>
+          <div class="cat-card-examples">Laranja · Angostura<br>Amaro caseiro</div>
+        </div>
+        <div class="cat-card-footer">
+          <span class="cat-card-count">Em breve</span>
+          <span class="cat-card-arrow" style="color:var(--cat-2)">→</span>
+        </div>
+      </a>
 
-    <!-- 3 Cordiais -->
-    <a href="cordiais/" class="cat-card">
-      <div class="cat-card-accent" style="background:var(--cat-3)"></div>
-      <div class="cat-card-body">
-        <div class="cat-card-name">Cordiais</div>
-        <div class="cat-card-examples">Maracujá · Gengibre<br>Elderflower</div>
-      </div>
-      <div class="cat-card-footer">
-        <span class="cat-card-count">Em breve</span>
-        <span class="cat-card-arrow" style="color:var(--cat-3)">→</span>
-      </div>
-    </a>
+      <!-- 3 Cordiais -->
+      <a href="cordiais/" class="cat-card">
+        <div class="cat-card-accent" style="background:var(--cat-3)"></div>
+        <div class="cat-card-body">
+          <div class="cat-card-name">Cordiais</div>
+          <div class="cat-card-examples">Maracujá · Gengibre<br>Elderflower</div>
+        </div>
+        <div class="cat-card-footer">
+          <span class="cat-card-count">Em breve</span>
+          <span class="cat-card-arrow" style="color:var(--cat-3)">→</span>
+        </div>
+      </a>
 
-    <!-- 4 Xaropes -->
-    <a href="xaropes/" class="cat-card">
-      <div class="cat-card-accent" style="background:var(--cat-4)"></div>
-      <div class="cat-card-body">
-        <div class="cat-card-name">Xaropes</div>
-        <div class="cat-card-examples">Demerara · Orgeat<br>Lavanda · Gengibre</div>
-      </div>
-      <div class="cat-card-footer">
-        <span class="cat-card-count">Em breve</span>
-        <span class="cat-card-arrow" style="color:var(--cat-4)">→</span>
-      </div>
-    </a>
+      <!-- 4 Xaropes -->
+      <a href="xaropes/" class="cat-card">
+        <div class="cat-card-accent" style="background:var(--cat-4)"></div>
+        <div class="cat-card-body">
+          <div class="cat-card-name">Xaropes</div>
+          <div class="cat-card-examples">Demerara · Orgeat<br>Lavanda · Gengibre</div>
+        </div>
+        <div class="cat-card-footer">
+          <span class="cat-card-count">1 receita</span>
+          <span class="cat-card-arrow" style="color:var(--cat-4)">→</span>
+        </div>
+      </a>
 
-    <!-- 5 Vermutes -->
-    <a href="vermutes/" class="cat-card">
-      <div class="cat-card-accent" style="background:var(--cat-5)"></div>
-      <div class="cat-card-body">
-        <div class="cat-card-name">Vermutes e Aromatizados</div>
-        <div class="cat-card-examples">Branco · Tinto<br>Quinado</div>
-      </div>
-      <div class="cat-card-footer">
-        <span class="cat-card-count">Em breve</span>
-        <span class="cat-card-arrow" style="color:var(--cat-5)">→</span>
-      </div>
-    </a>
+      <!-- 5 Vermutes -->
+      <a href="vermutes/" class="cat-card">
+        <div class="cat-card-accent" style="background:var(--cat-5)"></div>
+        <div class="cat-card-body">
+          <div class="cat-card-name">Vermutes e Aromatizados</div>
+          <div class="cat-card-examples">Branco · Tinto<br>Quinado</div>
+        </div>
+        <div class="cat-card-footer">
+          <span class="cat-card-count">Em breve</span>
+          <span class="cat-card-arrow" style="color:var(--cat-5)">→</span>
+        </div>
+      </a>
 
-    <!-- 6 Fermentados -->
-    <a href="fermentados/" class="cat-card">
-      <div class="cat-card-accent" style="background:var(--cat-6)"></div>
-      <div class="cat-card-body">
-        <div class="cat-card-name">Fermentados</div>
-        <div class="cat-card-examples">Kombucha · Lactofermentados<br>Vinagres</div>
-      </div>
-      <div class="cat-card-footer">
-        <span class="cat-card-count">Em breve</span>
-        <span class="cat-card-arrow" style="color:var(--cat-6)">→</span>
-      </div>
-    </a>
+      <!-- 6 Fermentados -->
+      <a href="fermentados/" class="cat-card">
+        <div class="cat-card-accent" style="background:var(--cat-6)"></div>
+        <div class="cat-card-body">
+          <div class="cat-card-name">Fermentados</div>
+          <div class="cat-card-examples">Kombucha · Lactofermentados<br>Vinagres</div>
+        </div>
+        <div class="cat-card-footer">
+          <span class="cat-card-count">Em breve</span>
+          <span class="cat-card-arrow" style="color:var(--cat-6)">→</span>
+        </div>
+      </a>
 
-    <!-- 7 Extratos -->
-    <a href="extratos/" class="cat-card">
-      <div class="cat-card-accent" style="background:var(--cat-7)"></div>
-      <div class="cat-card-body">
-        <div class="cat-card-name">Extratos</div>
-        <div class="cat-card-examples">Baunilha · Cítricos<br>Oleoresinas</div>
-      </div>
-      <div class="cat-card-footer">
-        <span class="cat-card-count">Em breve</span>
-        <span class="cat-card-arrow" style="color:var(--cat-7)">→</span>
-      </div>
-    </a>
+      <!-- 7 Extratos -->
+      <a href="extratos/" class="cat-card">
+        <div class="cat-card-accent" style="background:var(--cat-7)"></div>
+        <div class="cat-card-body">
+          <div class="cat-card-name">Extratos</div>
+          <div class="cat-card-examples">Baunilha · Cítricos<br>Oleoresinas</div>
+        </div>
+        <div class="cat-card-footer">
+          <span class="cat-card-count">Em breve</span>
+          <span class="cat-card-arrow" style="color:var(--cat-7)">→</span>
+        </div>
+      </a>
 
-    <!-- 8 Drinks -->
-    <a href="drinks/" class="cat-card">
-      <div class="cat-card-accent" style="background:var(--cat-8)"></div>
-      <div class="cat-card-body">
-        <div class="cat-card-name">Drinks</div>
-        <div class="cat-card-examples">Autorais · Clássicos<br>Temporada</div>
-      </div>
-      <div class="cat-card-footer">
-        <span class="cat-card-count">Em breve</span>
-        <span class="cat-card-arrow" style="color:var(--cat-8)">→</span>
-      </div>
-    </a>
+      <!-- 8 Drinks -->
+      <a href="drinks/" class="cat-card">
+        <div class="cat-card-accent" style="background:var(--cat-8)"></div>
+        <div class="cat-card-body">
+          <div class="cat-card-name">Drinks</div>
+          <div class="cat-card-examples">Autorais · Clássicos<br>Temporada</div>
+        </div>
+        <div class="cat-card-footer">
+          <span class="cat-card-count">Em breve</span>
+          <span class="cat-card-arrow" style="color:var(--cat-8)">→</span>
+        </div>
+      </a>
 
-    <!-- 9 Refrigerantes -->
-    <a href="refrigerantes/" class="cat-card">
-      <div class="cat-card-accent" style="background:var(--cat-9)"></div>
-      <div class="cat-card-body">
-        <div class="cat-card-name">Refrigerantes</div>
-        <div class="cat-card-examples">Água tônica · Ginger Ale<br>Sodas botânicas</div>
-      </div>
-      <div class="cat-card-footer">
-        <span class="cat-card-count">Em breve</span>
-        <span class="cat-card-arrow" style="color:var(--cat-9)">→</span>
-      </div>
-    </a>
+      <!-- 9 Refrigerantes -->
+      <a href="refrigerantes/" class="cat-card">
+        <div class="cat-card-accent" style="background:var(--cat-9)"></div>
+        <div class="cat-card-body">
+          <div class="cat-card-name">Refrigerantes</div>
+          <div class="cat-card-examples">Água tônica · Ginger Ale<br>Sodas botânicas</div>
+        </div>
+        <div class="cat-card-footer">
+          <span class="cat-card-count">Em breve</span>
+          <span class="cat-card-arrow" style="color:var(--cat-9)">→</span>
+        </div>
+      </a>
+
+    </div>
+
+    <!-- FOOTER -->
+    <footer>
+      <span class="footer-text">Alta Coquetelaria Caseira · Portfólio Artesanal</span>
+      <span class="footer-sig">@seuOtto</span>
+    </footer>
 
   </div>
-
-  <!-- FOOTER -->
-  <footer>
-    <span class="footer-text">Alta Coquetelaria Caseira · Portfólio Artesanal</span>
-    <span class="footer-sig">@seuOtto</span>
-  </footer>
-
-</div>
-
 </main>
 
 </body>
