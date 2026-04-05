@@ -1,0 +1,533 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Xaropes — Portfólio Artesanal</title>
+<style>
+@import url('https://api.fontshare.com/v2/css?f[]=gambetta@300,400,600,300i,400i&f[]=satoshi@300,400,500&display=swap');
+
+:root {
+  --bg:           #F2F5F0;
+  --bg-surface:   #FFFFFF;
+  --bg-surface-2: #F7FAF6;
+
+  --text-primary:   #1C2B1A;
+  --text-secondary: rgba(28,43,26,0.65);
+  --text-muted:     rgba(28,43,26,0.52);
+  --text-hint:      rgba(28,43,26,0.50);
+
+  --border-default: rgba(28,43,26,0.10);
+  --border-subtle:  rgba(28,43,26,0.06);
+  --border-hover:   rgba(28,43,26,0.22);
+
+  /* Xaropes — acento verde */
+  --accent:        #3E7235;
+  --accent-small:  #2E5528;
+  --accent-border: rgba(62,114,53,0.22);
+  --accent-bg:     rgba(62,114,53,0.07);
+  --accent-mid:    #6A9E52;
+}
+
+* { margin: 0; padding: 0; box-sizing: border-box; }
+
+body {
+  background: var(--bg);
+  font-family: 'Satoshi', 'Helvetica Neue', sans-serif;
+  color: var(--text-primary);
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+.main-content { flex: 1; }
+
+/* ── NAV ── */
+nav {
+  background: var(--bg-surface);
+  border-bottom: 1px solid var(--border-default);
+  height: 64px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 40px;
+  position: sticky;
+  top: 0;
+  z-index: 10;
+}
+
+.nav-brand {
+  display: flex;
+  align-items: baseline;
+  gap: 12px;
+}
+
+.nav-logo {
+  font-family: 'Gambetta', 'Georgia', serif;
+  font-size: 18px;
+  font-weight: 400;
+  color: var(--text-primary);
+  letter-spacing: -0.02em;
+  text-decoration: none;
+}
+
+.nav-logo em { font-style: italic; color: var(--accent); }
+
+.nav-tagline {
+  font-size: 10px;
+  font-weight: 500;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--text-hint);
+}
+
+.nav-links { display: flex; gap: 32px; }
+
+.nav-link {
+  font-size: 13px;
+  font-weight: 400;
+  color: var(--text-muted);
+  text-decoration: none;
+  transition: color 0.2s;
+}
+
+.nav-link:hover { color: var(--text-primary); font-weight: 500; }
+
+/* ── BREADCRUMB ── */
+.breadcrumb-wrap {
+  max-width: 860px;
+  margin: 0 auto;
+  padding: 24px 40px 0;
+}
+
+.breadcrumb {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 12px;
+  color: var(--text-muted);
+}
+
+.breadcrumb a {
+  color: var(--text-muted);
+  text-decoration: none;
+  transition: color 0.2s;
+}
+
+.breadcrumb a:hover { color: var(--text-primary); }
+
+.breadcrumb-sep { color: var(--text-hint); }
+
+.breadcrumb-current {
+  color: var(--accent-small);
+  font-weight: 500;
+}
+
+/* ── CATEGORY HEADER ── */
+.cat-header {
+  max-width: 860px;
+  margin: 0 auto;
+  padding: 32px 40px 48px;
+  display: grid;
+  grid-template-columns: 1fr auto;
+  align-items: end;
+  gap: 40px;
+  border-bottom: 1px solid var(--border-default);
+  animation: fadeUp 0.8s ease both;
+}
+
+.cat-accent-bar {
+  width: 40px;
+  height: 4px;
+  background: var(--accent);
+  border-radius: 2px;
+  margin-bottom: 16px;
+}
+
+.cat-title {
+  font-family: 'Gambetta', 'Georgia', serif;
+  font-size: clamp(32px, 4vw, 48px);
+  font-weight: 300;
+  line-height: 1.05;
+  letter-spacing: -0.02em;
+  color: var(--text-primary);
+}
+
+.cat-title em {
+  font-style: italic;
+  color: var(--accent);
+}
+
+.cat-header-right {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  gap: 4px;
+}
+
+.cat-count-num {
+  font-family: 'Gambetta', 'Georgia', serif;
+  font-size: 40px;
+  font-weight: 300;
+  color: var(--accent);
+  line-height: 1;
+}
+
+.cat-count-label {
+  font-size: 10px;
+  font-weight: 500;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--text-hint);
+}
+
+/* ── GRID ── */
+.grid-wrap {
+  max-width: 860px;
+  margin: 0 auto;
+  padding: 48px 40px 80px;
+  animation: fadeUp 0.8s 0.1s ease both;
+}
+
+.grid-section-label {
+  font-size: 10px;
+  font-weight: 500;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: var(--text-hint);
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  margin-bottom: 32px;
+}
+
+.grid-section-label::after {
+  content: '';
+  flex: 1;
+  height: 1px;
+  background: var(--border-default);
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 16px;
+}
+
+/* ── RECIPE CARD ── */
+.recipe-card {
+  background: var(--bg-surface);
+  border: 1px solid var(--border-default);
+  border-radius: 12px;
+  overflow: hidden;
+  cursor: pointer;
+  text-decoration: none;
+  color: inherit;
+  display: flex;
+  flex-direction: column;
+  transition: transform 0.2s, box-shadow 0.2s, border-color 0.2s;
+}
+
+.recipe-card:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 32px rgba(28,43,26,0.08);
+  border-color: var(--border-hover);
+}
+
+.recipe-card-accent {
+  height: 4px;
+  background: var(--accent);
+  flex-shrink: 0;
+}
+
+.recipe-card-body {
+  padding: 24px;
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.recipe-card-label {
+  font-size: 9px;
+  font-weight: 500;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: var(--accent-small);
+}
+
+.recipe-card-title {
+  font-family: 'Gambetta', 'Georgia', serif;
+  font-size: 20px;
+  font-weight: 400;
+  line-height: 1.15;
+  letter-spacing: -0.01em;
+  color: var(--text-primary);
+}
+
+.recipe-card-title em { font-style: italic; }
+
+.recipe-card-desc {
+  font-size: 12px;
+  font-weight: 300;
+  color: var(--text-muted);
+  line-height: 1.6;
+  flex: 1;
+}
+
+.recipe-card-tags {
+  display: flex;
+  gap: 6px;
+  flex-wrap: wrap;
+  margin-top: 8px;
+}
+
+.recipe-tag {
+  font-size: 10px;
+  font-weight: 500;
+  padding: 3px 8px;
+  border-radius: 4px;
+  background: var(--accent-bg);
+  border: 1px solid var(--accent-border);
+  color: var(--accent-small);
+  letter-spacing: 0.06em;
+}
+
+.recipe-card-footer {
+  padding: 14px 24px;
+  border-top: 1px solid var(--border-subtle);
+  background: var(--bg-surface-2);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.recipe-card-meta {
+  font-size: 11px;
+  color: var(--text-hint);
+}
+
+.recipe-card-arrow {
+  font-size: 14px;
+  color: var(--accent);
+  transition: transform 0.2s;
+}
+
+.recipe-card:hover .recipe-card-arrow {
+  transform: translateX(3px);
+}
+
+/* ── FEATURED CARD ── */
+.recipe-card.featured {
+  grid-column: span 3;
+  flex-direction: row;
+  border-color: var(--accent-border);
+}
+
+.recipe-card.featured:hover {
+  border-color: rgba(62,114,53,0.45);
+}
+
+.recipe-card.featured .recipe-card-accent {
+  width: 6px;
+  height: auto;
+  flex-shrink: 0;
+}
+
+.recipe-card.featured .recipe-card-body {
+  padding: 32px;
+  flex: 1;
+}
+
+.recipe-card.featured .recipe-card-title {
+  font-size: 28px;
+}
+
+.recipe-card.featured .recipe-card-desc {
+  font-size: 13px;
+  max-width: 520px;
+}
+
+.featured-stats {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  padding: 32px;
+  border-left: 1px solid var(--border-subtle);
+  background: var(--bg-surface-2);
+  min-width: 200px;
+  flex-shrink: 0;
+}
+
+.featured-stats-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 24px 16px;
+}
+
+.featured-arrow {
+  display: flex;
+  justify-content: flex-end;
+  margin-top: 24px;
+  font-size: 16px;
+  color: var(--accent);
+  transition: transform 0.2s;
+}
+
+.recipe-card.featured:hover .featured-arrow {
+  transform: translateX(3px);
+}
+
+.featured-stat-val {
+  font-family: 'Gambetta', 'Georgia', serif;
+  font-size: 24px;
+  font-weight: 300;
+  color: var(--accent);
+  line-height: 1;
+}
+
+.featured-stat-label {
+  font-size: 9px;
+  font-weight: 500;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--text-hint);
+  margin-top: 4px;
+}
+
+.featured-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 9px;
+  font-weight: 500;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: var(--accent-small);
+  background: var(--accent-bg);
+  border: 1px solid var(--accent-border);
+  border-radius: 4px;
+  padding: 4px 8px;
+  margin-bottom: 12px;
+  width: fit-content;
+}
+
+/* ── FOOTER ── */
+footer {
+  border-top: 1px solid var(--border-default);
+  padding-top: 32px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.footer-text {
+  font-size: 11px;
+  color: var(--text-hint);
+  letter-spacing: 0.08em;
+}
+
+.footer-sig {
+  font-family: 'Gambetta', 'Georgia', serif;
+  font-size: 14px;
+  font-style: italic;
+  color: rgba(62,114,53,0.5);
+}
+
+/* ── ANIMATION ── */
+@keyframes fadeUp {
+  from { opacity: 0; transform: translateY(16px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+/* ── RESPONSIVE ── */
+@media (max-width: 640px) {
+  nav, .breadcrumb-wrap, .cat-header, .grid-wrap {
+    padding-left: 20px;
+    padding-right: 20px;
+  }
+  .cat-header { grid-template-columns: 1fr; gap: 16px; }
+  .cat-header-right { align-items: flex-start; flex-direction: row; gap: 24px; }
+  .grid { grid-template-columns: 1fr; }
+  .recipe-card.featured { flex-direction: column; grid-column: span 1; }
+  .recipe-card.featured .recipe-card-accent { width: 100%; height: 4px; }
+  .featured-stats { border-left: none; border-top: 1px solid var(--border-subtle); flex-direction: row; flex-wrap: wrap; gap: 16px; min-width: unset; }
+  .nav-tagline { display: none; }
+}
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <div class="nav-brand">
+    <a href="../" class="nav-logo">Alta <em>Coquetelaria</em></a>
+    <div class="nav-tagline">Portfólio Artesanal</div>
+  </div>
+  <div class="nav-links">
+    <a href="../" class="nav-link">Receitas</a>
+  </div>
+</nav>
+
+<main class="main-content">
+
+<div class="breadcrumb-wrap">
+  <div class="breadcrumb">
+    <a href="../">Início</a>
+    <span class="breadcrumb-sep">›</span>
+    <span class="breadcrumb-current">Xaropes</span>
+  </div>
+</div>
+
+<!-- CATEGORY HEADER -->
+<div class="cat-header">
+  <div class="cat-header-left">
+    <div class="cat-accent-bar"></div>
+    <h1 class="cat-title">Xaropes</h1>
+  </div>
+  <div class="cat-header-right">
+    <div class="cat-count-num">1</div>
+    <div class="cat-count-label">Receita</div>
+  </div>
+</div>
+
+<!-- GRID -->
+<div class="grid-wrap">
+  <div class="grid-section-label">Receitas</div>
+  <div class="grid">
+
+    <!-- Coulis de Amarena -->
+    <a href="coulis-amarena-frutas-vermelhas-pimenta.html" class="recipe-card">
+      <div class="recipe-card-accent"></div>
+      <div class="recipe-card-body">
+        <div class="recipe-card-label">Xarope · Coulis</div>
+        <div class="recipe-card-title">Coulis de Amarena e <em>Frutas Vermelhas com Pimenta</em></div>
+        <div class="recipe-card-desc">
+          Coulis de amarena e frutas vermelhas com pimenta dedo-de-moça, finalizado com Maraschino e Cointreau.
+        </div>
+        <div class="recipe-card-tags">
+          <span class="recipe-tag">Brix 34–36</span>
+          <span class="recipe-tag">pH 3,0–3,5</span>
+          <span class="recipe-tag">~2,8% ABV</span>
+        </div>
+      </div>
+      <div class="recipe-card-footer">
+        <span class="recipe-card-meta">430–460ml · Coulis</span>
+        <span class="recipe-card-arrow">→</span>
+      </div>
+    </a>
+
+  </div>
+
+  <!-- FOOTER -->
+  <footer>
+    <span class="footer-text">Alta Coquetelaria Caseira · Xaropes</span>
+    <span class="footer-sig">@seuOtto</span>
+  </footer>
+
+</div>
+
+</main>
+
+</body>
+</html>
