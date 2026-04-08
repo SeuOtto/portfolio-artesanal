@@ -77,7 +77,7 @@ O autor nunca edita o índice nem as páginas de categoria manualmente.
 
 ### Descrição
 
-Página de entrada do portfólio. Apresenta o portfólio e exibe as 9 categorias como cards de navegação. Modo light.
+Página de entrada do portfólio. Apresenta o portfólio e exibe as 11 categorias como cards de navegação. Modo light.
 
 ### Componentes
 
@@ -92,7 +92,7 @@ Página de entrada do portfólio. Apresenta o portfólio e exibe as 9 categorias
 - Contadores: número de categorias e total de receitas publicadas
 
 **Grid de categorias**
-- 9 cards — um por categoria
+- 11 cards — um por categoria
 - Cada card: ícone ou acento colorido da categoria, nome, número de receitas
 - Clique navega para a página da categoria
 
@@ -223,7 +223,7 @@ O autor abre o arquivo HTML diretamente no browser e vê o documento completo co
 
 ## 7. Categorias
 
-9 categorias com paleta de acento própria definida em `ds-portfolio-artesanal.md`.
+11 categorias com paleta de acento própria definida em `ds-portfolio-artesanal.md`.
 
 | # | Categoria | Pasta | Exemplos |
 |---|---|---|---|
@@ -231,11 +231,13 @@ O autor abre o arquivo HTML diretamente no browser e vê o documento completo co
 | 2 | Bitters e Amaros | `/bitters/` | Bitter de laranja, amaro caseiro |
 | 3 | Cordiais | `/cordiais/` | Cordial de maracujá, elderflower |
 | 4 | Xaropes | `/xaropes/` | Simples, demerara, orgeat, lavanda |
-| 5 | Vermutes e Aromatizados | `/vermutes/` | Vermute branco, quinado |
-| 6 | Fermentados | `/fermentados/` | Kombucha, ginger beer, kefir |
-| 7 | Extratos | `/extratos/` | Tintura de baunilha, oleoresinas |
-| 8 | Drinks | `/drinks/` | Receitas autorais, clássicos |
-| 9 | Refrigerantes | `/refrigerantes/` | Água tônica, ginger ale, sodas |
+| 5 | Coulis | `/coulis/` | Coulis de framboesa, morango, manga |
+| 6 | Shrubs e Ácidos | `/shrubs/` | Shrub de maçã, solução ácida cítrica |
+| 7 | Vermutes e Aromatizados | `/vermutes/` | Vermute branco, quinado |
+| 8 | Fermentados | `/fermentados/` | Kombucha, ginger beer, kefir |
+| 9 | Extratos | `/extratos/` | Tintura de baunilha, oleoresinas |
+| 10 | Espumas | `/espumas/` | Espuma de cítricos, airs de lecitina |
+| 11 | Sodas | `/sodas/` | Água tônica, ginger ale, sodas cítricas |
 
 ---
 
@@ -263,11 +265,13 @@ O autor abre o arquivo HTML diretamente no browser e vê o documento completo co
 ├── bitters/
 ├── cordiais/
 ├── xaropes/
+├── coulis/
+├── shrubs/
 ├── vermutes/
 ├── fermentados/
 ├── extratos/
-├── drinks/
-└── refrigerantes/
+├── espumas/
+└── sodas/
 ```
 
 ---
