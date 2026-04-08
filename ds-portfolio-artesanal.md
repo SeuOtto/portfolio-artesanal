@@ -184,7 +184,35 @@ O acento é a única cor que muda entre categorias. Ele aparece em: barra latera
 
 ---
 
-### Categoria 5 — Vermutes e Aromatizados
+### Categoria 5 — Coulis
+*Reduções frutais concentradas — coulis de frutas vermelhas, tropicais, cítricas*
+
+| Token | Dark Mode | Light Mode |
+|---|---|---|
+| `--accent-primary` | `#B04A3A` | `#762D22` |
+| `--accent-light` | `#E09B88` | `#511C14` |
+| `--accent-border` | `rgba(176,74,58,0.50)` | `rgba(118,45,34,0.22)` |
+| `--accent-bg` | `rgba(176,74,58,0.08)` | `rgba(118,45,34,0.07)` |
+
+> Vermelho tijolo — polpa reduzida, fruta cozida, concentração.
+
+---
+
+### Categoria 6 — Shrubs e Ácidos
+*Shrubs de vinagre, soluções ácidas cítricas, ácidos balanceados*
+
+| Token | Dark Mode | Light Mode |
+|---|---|---|
+| `--accent-primary` | `#9A6E30` | `#785320` |
+| `--accent-light` | `#D4B078` | `#523813` |
+| `--accent-border` | `rgba(154,110,48,0.50)` | `rgba(120,83,32,0.22)` |
+| `--accent-bg` | `rgba(154,110,48,0.08)` | `rgba(120,83,32,0.07)` |
+
+> Âmbar-mel — vinagre envelhecido, acidez brilhante, brilho cítrico.
+
+---
+
+### Categoria 7 — Vermutes e Aromatizados
 *Vermutes brancos e tintos, quinados, vinhos aromatizados*
 
 | Token | Dark Mode | Light Mode |
@@ -198,7 +226,7 @@ O acento é a única cor que muda entre categorias. Ele aparece em: barra latera
 
 ---
 
-### Categoria 6 — Fermentados
+### Categoria 8 — Fermentados
 *Kombucha, kefir de água, ginger beer, jun, kvass, rejuvelac*
 
 | Token | Dark Mode | Light Mode |
@@ -212,7 +240,7 @@ O acento é a única cor que muda entre categorias. Ele aparece em: barra latera
 
 ---
 
-### Categoria 7 — Extratos
+### Categoria 9 — Extratos
 *Tinturas alcoólicas, extratos botânicos, oleoresinas, concentrados*
 
 | Token | Dark Mode | Light Mode |
@@ -226,22 +254,22 @@ O acento é a única cor que muda entre categorias. Ele aparece em: barra latera
 
 ---
 
-### Categoria 8 — Drinks
-*Receitas autorais, releituras de clássicos, drinks de temporada*
+### Categoria 10 — Espumas
+*Espumas de albumina, lecitina, airs, foams de sifão*
 
 | Token | Dark Mode | Light Mode |
 |---|---|---|
-| `--accent-primary` | `#3A7A8A` | `#1E5A6A` |
-| `--accent-light` | `#80C0CC` | `#0C3E4A` |
-| `--accent-border` | `rgba(58,122,138,0.50)` | `rgba(30,90,106,0.22)` |
-| `--accent-bg` | `rgba(58,122,138,0.08)` | `rgba(30,90,106,0.07)` |
+| `--accent-primary` | `#7A8E9A` | `#3D505B` |
+| `--accent-light` | `#B4C2CC` | `#26363F` |
+| `--accent-border` | `rgba(122,142,154,0.50)` | `rgba(61,80,91,0.22)` |
+| `--accent-bg` | `rgba(122,142,154,0.08)` | `rgba(61,80,91,0.07)` |
 
-> Azul-petróleo — gelo, coqueteleira, técnica precisa, serviço.
+> Azul-ardósia dessaturado — névoa, ar, textura etérea, leveza.
 
 ---
 
-### Categoria 9 — Refrigerantes
-*Sodas artesanais, águas tônicas, ginger ale, sodas botânicas, shrubs*
+### Categoria 11 — Sodas
+*Sodas artesanais, águas tônicas, ginger ale, sodas botânicas*
 
 | Token | Dark Mode | Light Mode |
 |---|---|---|
@@ -257,15 +285,17 @@ O acento é a única cor que muda entre categorias. Ele aparece em: barra latera
 ### Resumo visual das categorias
 
 ```
-1. Licores          →  Dourado        #C9A84C
-2. Bitters e Amaros →  Âmbar escuro   #A0622A
-3. Cordiais         →  Terracota      #C4632A
-4. Xaropes          →  Verde-salva    #6A9E52
-5. Vermutes         →  Vinho rosado   #8B3A5A
-6. Fermentados      →  Ocre verde     #7A8C5A
-7. Extratos         →  Roxo profundo  #6B5A8A
-8. Drinks           →  Azul-petróleo  #3A7A8A
-9. Refrigerantes    →  Verde-água     #4A9A7A
+ 1. Licores              →  Dourado                #C9A84C
+ 2. Bitters e Amaros     →  Âmbar escuro           #A0622A
+ 3. Cordiais             →  Terracota              #C4632A
+ 4. Xaropes              →  Verde-salva            #6A9E52
+ 5. Coulis               →  Vermelho tijolo        #B04A3A
+ 6. Shrubs e Ácidos      →  Âmbar-mel              #9A6E30
+ 7. Vermutes             →  Vinho rosado           #8B3A5A
+ 8. Fermentados          →  Ocre verde             #7A8C5A
+ 9. Extratos             →  Roxo profundo          #6B5A8A
+10. Espumas              →  Azul-ardósia           #7A8E9A
+11. Sodas                →  Verde-água             #4A9A7A
 ```
 
 ---
@@ -418,11 +448,13 @@ Label: Satoshi 10px uppercase letter-spacing 0.18em, --text-hint (rgba)
 | Licor sous vide | `85°C` Temperatura | `2h30` Sous Vide | `20%` ABV | `34g` Açúcar/100ml |
 | Xarope | `1:1` Ratio | `15min` Cozimento | `60°Bx` Concentração | `21 dias` Validade |
 | Bitter / amaro | `40%` ABV | `3 sem` Maceração | `15ml` Dose padrão | `18 meses` Shelf life |
-| Drink | `90ml` Rendimento | `2 pt` Espumante | `8%` ABV estimado | `1 min` Preparo |
+| Coulis | `500g` Fruta base | `40%` Redução | `55°Bx` Concentração | `14 dias` Validade |
+| Shrub | `1:1:1` Ratio | `7 dias` Maceração | `3,2` pH | `6 meses` Shelf life |
 | Fermentado | `7–10d` Fermentação 1 | `3–5d` Fermentação 2 | `3,0` pH alvo | `0,5%` ABV |
 | Vermute | `750ml` Base | `30 dias` Maceração | `16%` ABV | `6 meses` Shelf life |
 | Extrato | `70%` ABV base | `14 dias` Maceração | `5ml` Dose | `24 meses` Shelf life |
-| Refrigerante | `500ml` Rendimento | `72h` Carbonatação | `3,2` pH | `7 dias` Validade |
+| Espuma | `2g` Lecitina | `1:10` Ratio | `5min` Preparo | `24h` Validade |
+| Soda | `500ml` Rendimento | `72h` Carbonatação | `3,2` pH | `7 dias` Validade |
 
 Regras: valores curtos (números, unidades, siglas), labels máximo 2 palavras, 4 slots sempre preenchidos.
 
@@ -563,7 +595,7 @@ Duração padrão: `0.8s ease both`
 
 ## 11. Checklist para cada nova receita
 
-- [ ] Categoria definida (1 das 9) → tokens de acento aplicados
+- [ ] Categoria definida (1 das 11) → tokens de acento aplicados
 - [ ] Barra lateral com `--accent-primary` (Hex)
 - [ ] Fontes carregadas via Fontshare (Gambetta + Satoshi)
 - [ ] Rendimento calculado e correto no hero badge
