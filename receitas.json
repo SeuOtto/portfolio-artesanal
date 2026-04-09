@@ -1,16 +1,16 @@
 {
   "categorias": [
-    { "slug": "licores",     "nome": "Licores",                 "ordem": 1,  "exemplos": "Sabugueiro · Café\nLimoncello" },
-    { "slug": "bitters",     "nome": "Bitters e Amaros",        "ordem": 2,  "exemplos": "Laranja · Angostura\nAmaro caseiro" },
-    { "slug": "cordiais",    "nome": "Cordiais",                "ordem": 3,  "exemplos": "Maracujá · Gengibre\nElderflower" },
-    { "slug": "xaropes",     "nome": "Xaropes",                 "ordem": 4,  "exemplos": "Demerara · Orgeat\nLavanda · Gengibre" },
-    { "slug": "coulis",      "nome": "Coulis",                  "ordem": 5,  "exemplos": "Frutas vermelhas · Manga\nMorango" },
-    { "slug": "shrubs",      "nome": "Shrubs e Ácidos",         "ordem": 6,  "exemplos": "Maçã · Framboesa\nSolução cítrica" },
-    { "slug": "vermutes",    "nome": "Vermutes e Aromatizados", "ordem": 7,  "exemplos": "Branco · Tinto\nQuinado" },
-    { "slug": "fermentados", "nome": "Fermentados",             "ordem": 8,  "exemplos": "Kombucha · Ginger beer\nKefir" },
-    { "slug": "extratos",    "nome": "Extratos",                "ordem": 9,  "exemplos": "Baunilha · Cítricos\nOleoresinas" },
-    { "slug": "espumas",     "nome": "Espumas",                 "ordem": 10, "exemplos": "Cítricos · Lecitina\nAirs" },
-    { "slug": "sodas",       "nome": "Sodas",                   "ordem": 11, "exemplos": "Água tônica · Ginger Ale\nSodas botânicas" }
+    { "slug": "licores",     "nome": "Licores",                 "ordem": 1 },
+    { "slug": "bitters",     "nome": "Bitters e Amaros",        "ordem": 2 },
+    { "slug": "cordiais",    "nome": "Cordiais",                "ordem": 3 },
+    { "slug": "xaropes",     "nome": "Xaropes",                 "ordem": 4 },
+    { "slug": "coulis",      "nome": "Coulis",                  "ordem": 5 },
+    { "slug": "shrubs",      "nome": "Shrubs e Ácidos",         "ordem": 6 },
+    { "slug": "vermutes",    "nome": "Vermutes e Aromatizados", "ordem": 7 },
+    { "slug": "fermentados", "nome": "Fermentados",             "ordem": 8 },
+    { "slug": "extratos",    "nome": "Extratos",                "ordem": 9 },
+    { "slug": "espumas",     "nome": "Espumas",                 "ordem": 10 },
+    { "slug": "sodas",       "nome": "Sodas",                   "ordem": 11 }
   ],
   "receitas": [
     { "categoria": "licores", "slug": "flor-de-sabugueiro",              "destaque": true  },
