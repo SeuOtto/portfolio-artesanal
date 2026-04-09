@@ -228,11 +228,9 @@ nav {
 }
 
 .cat-card-body {
-  padding: 24px;
-  flex: 1;
+  padding: 20px 24px;
   display: flex;
   flex-direction: column;
-  gap: 0;
 }
 
 .cat-card-name {
@@ -242,16 +240,6 @@ nav {
   line-height: 1.1;
   letter-spacing: -0.01em;
   color: var(--text-primary);
-  margin-bottom: 10px;
-}
-
-.cat-card-examples {
-  font-size: 12px;
-  font-weight: 400;
-  color: var(--text-muted);
-  line-height: 1.5;
-  flex: 1;
-  white-space: pre-line;
 }
 
 .cat-card-footer {
@@ -414,50 +402,20 @@ footer {
   // 3. Ordenar categorias pela ordem definida no JSON
   const cats = [...data.categorias].sort((a, b) => a.ordem - b.ordem);
 
-  // 4. Contar receitas por categoria (e nomes das receitas reais)
+  // 4. Contar receitas por categoria
   const receitasPorCat = {};
   for (const r of data.receitas) {
     if (!receitasPorCat[r.categoria]) receitasPorCat[r.categoria] = [];
     receitasPorCat[r.categoria].push(r);
   }
 
-  // 5. Buscar nomes reais das receitas (fetch paralelo dos metadados)
-  const receitasComNome = await Promise.all(
-    data.receitas.map(async (r) => {
-      try {
-        const res = await fetch(`${r.categoria}/${r.slug}.html?t=${Date.now()}`, { cache: 'no-cache' });
-        const html = await res.text();
-        const match = html.match(/<meta name="receita-nome"\s+content="([^"]+)"/);
-        return { ...r, nome: match ? match[1] : r.slug };
-      } catch {
-        return { ...r, nome: r.slug };
-      }
-    })
-  );
-
-  // 6. Mapa de nomes por categoria
-  const nomesPorCat = {};
-  for (const r of receitasComNome) {
-    if (!nomesPorCat[r.categoria]) nomesPorCat[r.categoria] = [];
-    nomesPorCat[r.categoria].push(r.nome);
-  }
-
-  // 7. Renderizar cards
+  // 5. Renderizar cards
   const grid = document.getElementById('grid-categorias');
   grid.innerHTML = '';
 
   cats.forEach((cat) => {
-    const receitas = receitasPorCat[cat.slug] || [];
-    const count = receitas.length;
+    const count = (receitasPorCat[cat.slug] || []).length;
     const cor = `var(--cat-${cat.slug})`;
-
-    // Exemplos: se houver receitas reais, mostra elas; senão mostra exemplos do JSON
-    let examplesText;
-    if (count > 0) {
-      examplesText = nomesPorCat[cat.slug].slice(0, 2).join('\n');
-    } else {
-      examplesText = cat.exemplos || '';
-    }
 
     // Label de contador
     let countLabel;
@@ -472,7 +430,6 @@ footer {
       <div class="cat-card-accent" style="background:${cor}"></div>
       <div class="cat-card-body">
         <div class="cat-card-name">${escapeHtml(cat.nome)}</div>
-        <div class="cat-card-examples">${escapeHtml(examplesText)}</div>
       </div>
       <div class="cat-card-footer">
         <span class="cat-card-count">${countLabel}</span>
