@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Licores — Portfólio Artesanal</title>
+<title>Categoria — Portfólio Artesanal</title>
 <style>
 @import url('https://api.fontshare.com/v2/css?f[]=gambetta@300,400,600,300i,400i&f[]=satoshi@300,400,500&display=swap');
 
@@ -21,13 +21,27 @@
   --border-subtle:  rgba(28,43,26,0.06);
   --border-hover:   rgba(28,43,26,0.22);
 
-  /* Licores — acento dourado */
+  /* Acento — preenchido via JS conforme a categoria detectada */
   --accent:        #A07830;
   --accent-small:  #7A5A1E;
   --accent-border: rgba(160,120,48,0.22);
   --accent-bg:     rgba(160,120,48,0.07);
   --accent-mid:    #C9A84C;
+  --accent-rgb:    160,120,48;
 }
+
+/* ── PALETAS LIGHT MODE POR CATEGORIA ── */
+body[data-cat="licores"]     { --accent:#A07830; --accent-small:#7A5A1E; --accent-border:rgba(160,120,48,0.22); --accent-bg:rgba(160,120,48,0.07); --accent-mid:#C9A84C; --accent-rgb:160,120,48; }
+body[data-cat="bitters"]     { --accent:#7A4020; --accent-small:#5C2E0E; --accent-border:rgba(122,64,32,0.22);  --accent-bg:rgba(122,64,32,0.07);  --accent-mid:#A0622A; --accent-rgb:122,64,32; }
+body[data-cat="cordiais"]    { --accent:#9B4520; --accent-small:#6B2E10; --accent-border:rgba(155,69,32,0.22);  --accent-bg:rgba(155,69,32,0.07);  --accent-mid:#C4632A; --accent-rgb:155,69,32; }
+body[data-cat="xaropes"]     { --accent:#3E7235; --accent-small:#2A5E22; --accent-border:rgba(62,114,53,0.22);  --accent-bg:rgba(62,114,53,0.07);  --accent-mid:#6A9E52; --accent-rgb:62,114,53; }
+body[data-cat="coulis"]      { --accent:#762D22; --accent-small:#511C14; --accent-border:rgba(118,45,34,0.22);  --accent-bg:rgba(118,45,34,0.07);  --accent-mid:#B04A3A; --accent-rgb:118,45,34; }
+body[data-cat="shrubs"]      { --accent:#785320; --accent-small:#523813; --accent-border:rgba(120,83,32,0.22);  --accent-bg:rgba(120,83,32,0.07);  --accent-mid:#9A6E30; --accent-rgb:120,83,32; }
+body[data-cat="vermutes"]    { --accent:#6B2848; --accent-small:#4A1432; --accent-border:rgba(107,40,72,0.22);  --accent-bg:rgba(107,40,72,0.07);  --accent-mid:#8B3A5A; --accent-rgb:107,40,72; }
+body[data-cat="fermentados"] { --accent:#4E6030; --accent-small:#2E4418; --accent-border:rgba(78,96,48,0.22);   --accent-bg:rgba(78,96,48,0.07);   --accent-mid:#7A8C5A; --accent-rgb:78,96,48; }
+body[data-cat="extratos"]    { --accent:#4A3A6A; --accent-small:#2E2248; --accent-border:rgba(74,58,106,0.22);  --accent-bg:rgba(74,58,106,0.07);  --accent-mid:#6B5A8A; --accent-rgb:74,58,106; }
+body[data-cat="espumas"]     { --accent:#3D505B; --accent-small:#26363F; --accent-border:rgba(61,80,91,0.22);   --accent-bg:rgba(61,80,91,0.07);   --accent-mid:#7A8E9A; --accent-rgb:61,80,91; }
+body[data-cat="sodas"]       { --accent:#2A7A5A; --accent-small:#0E5A3C; --accent-border:rgba(42,122,90,0.22);  --accent-bg:rgba(42,122,90,0.07);  --accent-mid:#4A9A7A; --accent-rgb:42,122,90; }
 
 * { margin: 0; padding: 0; box-sizing: border-box; }
 
@@ -56,11 +70,7 @@ nav {
   z-index: 10;
 }
 
-.nav-brand {
-  display: flex;
-  align-items: baseline;
-  gap: 12px;
-}
+.nav-brand { display: flex; align-items: baseline; gap: 12px; }
 
 .nav-logo {
   font-family: 'Gambetta', 'Georgia', serif;
@@ -151,11 +161,6 @@ nav {
   line-height: 1.05;
   letter-spacing: -0.02em;
   color: var(--text-primary);
-}
-
-.cat-title em {
-  font-style: italic;
-  color: var(--accent);
 }
 
 .cat-header-right {
@@ -275,24 +280,6 @@ nav {
   flex: 1;
 }
 
-.recipe-card-tags {
-  display: flex;
-  gap: 6px;
-  flex-wrap: wrap;
-  margin-top: 8px;
-}
-
-.recipe-tag {
-  font-size: 10px;
-  font-weight: 500;
-  padding: 3px 8px;
-  border-radius: 4px;
-  background: var(--accent-bg);
-  border: 1px solid var(--accent-border);
-  color: var(--accent-small);
-  letter-spacing: 0.06em;
-}
-
 .recipe-card-footer {
   padding: 14px 24px;
   border-top: 1px solid var(--border-subtle);
@@ -325,7 +312,7 @@ nav {
 }
 
 .recipe-card.featured:hover {
-  border-color: rgba(160,120,48,0.45);
+  border-color: rgba(var(--accent-rgb),0.45);
 }
 
 .recipe-card.featured .recipe-card-accent {
@@ -412,6 +399,33 @@ nav {
   width: fit-content;
 }
 
+/* ── EMPTY STATE ── */
+.empty-state {
+  padding: 48px 24px;
+  text-align: center;
+  background: var(--bg-surface);
+  border: 1px dashed var(--border-default);
+  border-radius: 12px;
+  grid-column: 1 / -1;
+}
+
+.empty-state-text {
+  font-size: 13px;
+  color: var(--text-muted);
+  font-style: italic;
+}
+
+/* ── LOADING ── */
+.loading-state {
+  padding: 48px 24px;
+  text-align: center;
+  color: var(--text-hint);
+  font-size: 12px;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  grid-column: 1 / -1;
+}
+
 /* ── FOOTER ── */
 footer {
   border-top: 1px solid var(--border-default);
@@ -431,7 +445,7 @@ footer {
   font-family: 'Gambetta', 'Georgia', serif;
   font-size: 14px;
   font-style: italic;
-  color: rgba(160,120,48,0.5);
+  color: rgba(var(--accent-rgb),0.5);
 }
 
 /* ── ANIMATION ── */
@@ -475,7 +489,7 @@ footer {
   <div class="breadcrumb">
     <a href="../">Início</a>
     <span class="breadcrumb-sep">›</span>
-    <span class="breadcrumb-current">Licores</span>
+    <span class="breadcrumb-current" id="breadcrumb-current">—</span>
   </div>
 </div>
 
@@ -483,85 +497,214 @@ footer {
 <div class="cat-header">
   <div class="cat-header-left">
     <div class="cat-accent-bar"></div>
-    <h1 class="cat-title">Licores</h1>
+    <h1 class="cat-title" id="cat-title">—</h1>
   </div>
   <div class="cat-header-right">
-    <div class="cat-count-num">2</div>
-    <div class="cat-count-label">Receitas</div>
+    <div class="cat-count-num" id="cat-count-num">0</div>
+    <div class="cat-count-label" id="cat-count-label">Receitas</div>
   </div>
 </div>
 
 <!-- GRID -->
 <div class="grid-wrap">
   <div class="grid-section-label">Receitas</div>
-  <div class="grid">
-
-    <!-- FEATURED — Flor de Sabugueiro -->
-    <a href="flor-de-sabugueiro.html" class="recipe-card featured">
-      <div class="recipe-card-accent"></div>
-      <div class="recipe-card-body">
-        <div class="featured-badge">✦ Destaque</div>
-        <div class="recipe-card-label">Licor · Floral</div>
-        <div class="recipe-card-title">Flor de <em>Sabugueiro</em></div>
-        <div class="recipe-card-desc">
-          Licor artesanal estilo St-Germain.
-        </div>
-      </div>
-      <div class="featured-stats">
-        <div class="featured-stats-grid">
-          <div>
-            <div class="featured-stat-val">85°C</div>
-            <div class="featured-stat-label">Temperatura</div>
-          </div>
-          <div>
-            <div class="featured-stat-val">2h30</div>
-            <div class="featured-stat-label">Sous Vide</div>
-          </div>
-          <div>
-            <div class="featured-stat-val">20%</div>
-            <div class="featured-stat-label">ABV</div>
-          </div>
-          <div>
-            <div class="featured-stat-val">34g</div>
-            <div class="featured-stat-label">Açúcar/100ml</div>
-          </div>
-        </div>
-        <div class="featured-arrow">→</div>
-      </div>
-    </a>
-
-    <!-- Licor de Café -->
-    <a href="licor-de-cafe.html" class="recipe-card">
-      <div class="recipe-card-accent"></div>
-      <div class="recipe-card-body">
-        <div class="recipe-card-label">Licor · Café</div>
-        <div class="recipe-card-title">Licor de <em>Café</em></div>
-        <div class="recipe-card-desc">
-          Infusão em whisky com cold brew e concentrado de stout por crioconcentração.
-        </div>
-        <div class="recipe-card-tags">
-          <span class="recipe-tag">20% ABV</span>
-          <span class="recipe-tag">Cold Brew</span>
-          <span class="recipe-tag">Crioconcentração</span>
-        </div>
-      </div>
-      <div class="recipe-card-footer">
-        <span class="recipe-card-meta">1,5L · 24h infusão</span>
-        <span class="recipe-card-arrow">→</span>
-      </div>
-    </a>
-
+  <div class="grid" id="grid">
+    <div class="loading-state">Carregando receitas…</div>
   </div>
 
-  <!-- FOOTER -->
   <footer>
-    <span class="footer-text">Alta Coquetelaria Caseira · Licores</span>
+    <span class="footer-text" id="footer-text">Alta Coquetelaria Caseira</span>
     <span class="footer-sig">@seuOtto</span>
   </footer>
-
 </div>
 
 </main>
+
+<script>
+/* ============================================================
+   INDEX GENÉRICO DE CATEGORIA
+   Um arquivo, funciona em qualquer pasta.
+   Detecta a categoria pelo segmento final da URL.
+============================================================ */
+(async function() {
+
+  // 1. Detectar categoria pela URL
+  // Ex: /coulis/ → "coulis"  |  /licores/index.html → "licores"
+  const pathParts = window.location.pathname
+    .split('/')
+    .filter(p => p && p !== 'index.html');
+  const catSlug = pathParts[pathParts.length - 1] || 'licores';
+
+  document.body.setAttribute('data-cat', catSlug);
+
+  // 2. Carregar receitas.json (na raiz do site)
+  let data;
+  try {
+    const res = await fetch(`../receitas.json?t=${Date.now()}`, { cache: 'no-cache' });
+    data = await res.json();
+  } catch (err) {
+    document.getElementById('grid').innerHTML =
+      '<div class="empty-state"><div class="empty-state-text">Erro ao carregar catálogo. Tente recarregar a página.</div></div>';
+    console.error('Erro ao carregar receitas.json:', err);
+    return;
+  }
+
+  // 3. Encontrar metadata da categoria
+  const catInfo = data.categorias.find(c => c.slug === catSlug);
+  if (!catInfo) {
+    document.getElementById('grid').innerHTML =
+      '<div class="empty-state"><div class="empty-state-text">Categoria não encontrada no catálogo.</div></div>';
+    return;
+  }
+
+  // 4. Preencher header com dados da categoria
+  document.title = `${catInfo.nome} — Portfólio Artesanal`;
+  document.getElementById('breadcrumb-current').textContent = catInfo.nome;
+  document.getElementById('cat-title').textContent = catInfo.nome;
+  document.getElementById('footer-text').textContent =
+    `Alta Coquetelaria Caseira · ${catInfo.nome}`;
+
+  // 5. Filtrar receitas desta categoria
+  const receitasCat = data.receitas.filter(r => r.categoria === catSlug);
+  const count = receitasCat.length;
+  document.getElementById('cat-count-num').textContent = count;
+  document.getElementById('cat-count-label').textContent =
+    count === 1 ? 'Receita' : 'Receitas';
+
+  // 6. Empty state se não houver receita
+  if (count === 0) {
+    document.getElementById('grid').innerHTML =
+      '<div class="empty-state"><div class="empty-state-text">Nenhuma receita publicada ainda nesta categoria.</div></div>';
+    return;
+  }
+
+  // 7. Buscar metadados de cada receita (fetch do HTML + parse das <meta>)
+  const receitasComMeta = await Promise.all(
+    receitasCat.map(async (r) => {
+      try {
+        const res = await fetch(`${r.slug}.html?t=${Date.now()}`, { cache: 'no-cache' });
+        const html = await res.text();
+        const parser = new DOMParser();
+        const doc = parser.parseFromString(html, 'text/html');
+        const getMeta = (name) => {
+          const el = doc.querySelector(`meta[name="${name}"]`);
+          return el ? el.getAttribute('content') : '';
+        };
+        return {
+          ...r,
+          nome:       getMeta('receita-nome'),
+          subtitulo:  getMeta('receita-subtitulo'),
+          descricao:  getMeta('receita-descricao'),
+          rendimento: getMeta('receita-rendimento'),
+          abv:        getMeta('receita-abv'),
+          stat1v:     getMeta('receita-stat1-valor'),
+          stat1l:     getMeta('receita-stat1-label'),
+          stat2v:     getMeta('receita-stat2-valor'),
+          stat2l:     getMeta('receita-stat2-label'),
+          stat3v:     getMeta('receita-stat3-valor'),
+          stat3l:     getMeta('receita-stat3-label'),
+          stat4v:     getMeta('receita-stat4-valor'),
+          stat4l:     getMeta('receita-stat4-label'),
+        };
+      } catch (err) {
+        console.error(`Erro ao carregar ${r.slug}.html:`, err);
+        return { ...r, nome: r.slug, subtitulo: '', descricao: '', _erro: true };
+      }
+    })
+  );
+
+  // 8. Ordenar: destaque primeiro, depois resto (ordem original do JSON)
+  receitasComMeta.sort((a, b) => (b.destaque ? 1 : 0) - (a.destaque ? 1 : 0));
+
+  // 9. Renderizar cards
+  const grid = document.getElementById('grid');
+  grid.innerHTML = '';
+
+  receitasComMeta.forEach((r) => {
+    // Título com itálico na última palavra (convenção visual do portfólio)
+    const tituloHTML = formatarTitulo(r.nome || r.slug);
+
+    // Label do card: "Categoria · Subtítulo"
+    const labelTxt = r.subtitulo
+      ? `${catInfo.nome.replace(/ e .+$/, '')} · ${r.subtitulo}`
+      : catInfo.nome;
+
+    // Stats para card featured (usa até 4 stats da receita)
+    const stats = [];
+    if (r.stat1v) stats.push({ v: r.stat1v, l: r.stat1l });
+    if (r.stat2v) stats.push({ v: r.stat2v, l: r.stat2l });
+    if (r.stat3v) stats.push({ v: r.stat3v, l: r.stat3l });
+    if (r.stat4v) stats.push({ v: r.stat4v, l: r.stat4l });
+
+    const card = document.createElement('a');
+    card.href = `${r.slug}.html`;
+
+    if (r.destaque) {
+      // ── CARD FEATURED ──
+      card.className = 'recipe-card featured';
+      card.innerHTML = `
+        <div class="recipe-card-accent"></div>
+        <div class="recipe-card-body">
+          <div class="featured-badge">✦ Destaque</div>
+          <div class="recipe-card-label">${escapeHtml(labelTxt)}</div>
+          <div class="recipe-card-title">${tituloHTML}</div>
+          <div class="recipe-card-desc">${escapeHtml(r.descricao || '')}</div>
+        </div>
+        <div class="featured-stats">
+          <div class="featured-stats-grid">
+            ${stats.slice(0, 4).map(s => `
+              <div>
+                <div class="featured-stat-val">${escapeHtml(s.v)}</div>
+                <div class="featured-stat-label">${escapeHtml(s.l)}</div>
+              </div>
+            `).join('')}
+          </div>
+          <div class="featured-arrow">→</div>
+        </div>
+      `;
+    } else {
+      // ── CARD NORMAL ──
+      const metaFooter = r.rendimento
+        ? `${r.rendimento}${r.abv && r.abv !== 'N/A' ? ' · ' + r.abv : ''}`
+        : '';
+
+      card.className = 'recipe-card';
+      card.innerHTML = `
+        <div class="recipe-card-accent"></div>
+        <div class="recipe-card-body">
+          <div class="recipe-card-label">${escapeHtml(labelTxt)}</div>
+          <div class="recipe-card-title">${tituloHTML}</div>
+        </div>
+        <div class="recipe-card-footer">
+          <span class="recipe-card-meta">${escapeHtml(metaFooter)}</span>
+          <span class="recipe-card-arrow">→</span>
+        </div>
+      `;
+    }
+
+    grid.appendChild(card);
+  });
+
+  // ─── Helpers ───
+  function escapeHtml(str) {
+    if (!str) return '';
+    return String(str)
+      .replace(/&/g, '&amp;')
+      .replace(/</g, '&lt;')
+      .replace(/>/g, '&gt;')
+      .replace(/"/g, '&quot;');
+  }
+
+  function formatarTitulo(nome) {
+    // Coloca a última palavra em itálico (convenção do portfólio)
+    const partes = nome.trim().split(' ');
+    if (partes.length < 2) return escapeHtml(nome);
+    const ultima = partes.pop();
+    return `${escapeHtml(partes.join(' '))} <em>${escapeHtml(ultima)}</em>`;
+  }
+
+})();
+</script>
 
 </body>
 </html>
