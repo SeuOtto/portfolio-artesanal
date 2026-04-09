@@ -18,16 +18,22 @@
   --border-default: rgba(28,43,26,0.10);
   --border-subtle: rgba(28,43,26,0.06);
   --border-hover: rgba(28,43,26,0.22);
-  /* acentos por categoria */
-  --cat-1: #A07830; /* Licores */
-  --cat-2: #7A4020; /* Bitters */
-  --cat-3: #9B4520; /* Cordiais */
-  --cat-4: #3E7235; /* Xaropes */
-  --cat-5: #6B2848; /* Vermutes */
-  --cat-6: #4E6030; /* Fermentados */
-  --cat-7: #4A3A6A; /* Extratos */
-  --cat-8: #1E5A6A; /* Drinks */
-  --cat-9: #2A7A5A; /* Refrigerantes */
+
+  /* Cor principal da marca — dourado dos Licores */
+  --brand: #A07830;
+
+  /* Acentos por categoria — Light Mode (seguindo DS) */
+  --cat-licores:     #A07830;
+  --cat-bitters:     #7A4020;
+  --cat-cordiais:    #9B4520;
+  --cat-xaropes:     #3E7235;
+  --cat-coulis:      #762D22;
+  --cat-shrubs:      #785320;
+  --cat-vermutes:    #6B2848;
+  --cat-fermentados: #4E6030;
+  --cat-extratos:    #4A3A6A;
+  --cat-espumas:     #3D505B;
+  --cat-sodas:       #2A7A5A;
 }
 
 * { margin: 0; padding: 0; box-sizing: border-box; }
@@ -57,11 +63,7 @@ nav {
   z-index: 10;
 }
 
-.nav-brand {
-  display: flex;
-  align-items: baseline;
-  gap: 12px;
-}
+.nav-brand { display: flex; align-items: baseline; gap: 12px; }
 
 .nav-logo {
   font-family: 'Gambetta', 'Georgia', serif;
@@ -72,10 +74,7 @@ nav {
   text-decoration: none;
 }
 
-.nav-logo em {
-  font-style: italic;
-  color: var(--cat-1);
-}
+.nav-logo em { font-style: italic; color: var(--brand); }
 
 .nav-tagline {
   font-size: 10px;
@@ -85,10 +84,7 @@ nav {
   color: var(--text-hint);
 }
 
-.nav-links {
-  display: flex;
-  gap: 32px;
-}
+.nav-links { display: flex; gap: 32px; }
 
 .nav-link {
   font-size: 13px;
@@ -119,7 +115,7 @@ nav {
   font-weight: 500;
   letter-spacing: 0.25em;
   text-transform: uppercase;
-  color: var(--cat-1);
+  color: var(--brand);
   margin-bottom: 16px;
 }
 
@@ -134,7 +130,7 @@ nav {
 
 .hero-title em {
   font-style: italic;
-  color: var(--cat-1);
+  color: var(--brand);
 }
 
 .hero-desc {
@@ -153,16 +149,14 @@ nav {
   gap: 16px;
 }
 
-.counter {
-  text-align: right;
-}
+.counter { text-align: right; }
 
 .counter-num {
   font-family: 'Gambetta', 'Georgia', serif;
   font-size: 40px;
   font-weight: 300;
   line-height: 1;
-  color: var(--cat-1);
+  color: var(--brand);
 }
 
 .counter-label {
@@ -178,7 +172,7 @@ nav {
 .grid-wrap {
   max-width: 860px;
   margin: 0 auto;
-  padding: 48px 40px 80px;
+  padding: 48px 40px 0;
   animation: fadeUp 0.8s 0.1s ease both;
 }
 
@@ -257,6 +251,7 @@ nav {
   color: var(--text-muted);
   line-height: 1.5;
   flex: 1;
+  white-space: pre-line;
 }
 
 .cat-card-footer {
@@ -276,17 +271,33 @@ nav {
 
 .cat-card-arrow {
   font-size: 14px;
-  color: var(--text-hint);
   transition: transform 0.2s, color 0.2s;
 }
 
 .cat-card:hover .cat-card-arrow {
   transform: translateX(3px);
-  color: var(--text-muted);
+}
+
+/* ── LOADING ── */
+.loading-state {
+  padding: 48px 24px;
+  text-align: center;
+  color: var(--text-hint);
+  font-size: 12px;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  grid-column: 1 / -1;
 }
 
 /* ── FOOTER ── */
 footer {
+  margin-top: auto;
+  padding: 64px 40px 40px;
+}
+
+.footer-inner {
+  max-width: 860px;
+  margin: 0 auto;
   border-top: 1px solid var(--border-default);
   padding-top: 32px;
   display: flex;
@@ -315,7 +326,7 @@ footer {
 
 /* ── RESPONSIVE ── */
 @media (max-width: 640px) {
-  nav, .hero, .grid-wrap { padding-left: 20px; padding-right: 20px; }
+  nav, .hero, .grid-wrap, footer { padding-left: 20px; padding-right: 20px; }
   .hero { grid-template-columns: 1fr; gap: 24px; }
   .hero-counters { flex-direction: row; align-items: flex-end; }
   .grid { grid-template-columns: 1fr 1fr; }
@@ -325,7 +336,6 @@ footer {
 @media (max-width: 420px) {
   .grid { grid-template-columns: 1fr; }
 }
-
 </style>
 </head>
 <body>
@@ -351,11 +361,11 @@ footer {
     </div>
     <div class="hero-counters">
       <div class="counter">
-        <div class="counter-num">9</div>
+        <div class="counter-num" id="total-categorias">—</div>
         <div class="counter-label">Categorias</div>
       </div>
       <div class="counter">
-        <div class="counter-num">3</div>
+        <div class="counter-num" id="total-receitas">—</div>
         <div class="counter-label">Receitas</div>
       </div>
     </div>
@@ -364,135 +374,126 @@ footer {
   <!-- GRID -->
   <div class="grid-wrap">
     <div class="grid-section-label">Categorias</div>
-    <div class="grid">
-
-      <!-- 1 Licores -->
-      <a href="licores/" class="cat-card">
-        <div class="cat-card-accent" style="background:var(--cat-1)"></div>
-        <div class="cat-card-body">
-          <div class="cat-card-name">Licores</div>
-          <div class="cat-card-examples">Sabugueiro · Café<br>Limoncello</div>
-        </div>
-        <div class="cat-card-footer">
-          <span class="cat-card-count">2 receitas</span>
-          <span class="cat-card-arrow" style="color:var(--cat-1)">→</span>
-        </div>
-      </a>
-
-      <!-- 2 Bitters -->
-      <a href="bitters/" class="cat-card">
-        <div class="cat-card-accent" style="background:var(--cat-2)"></div>
-        <div class="cat-card-body">
-          <div class="cat-card-name">Bitters e Amaros</div>
-          <div class="cat-card-examples">Laranja · Angostura<br>Amaro caseiro</div>
-        </div>
-        <div class="cat-card-footer">
-          <span class="cat-card-count">Em breve</span>
-          <span class="cat-card-arrow" style="color:var(--cat-2)">→</span>
-        </div>
-      </a>
-
-      <!-- 3 Cordiais -->
-      <a href="cordiais/" class="cat-card">
-        <div class="cat-card-accent" style="background:var(--cat-3)"></div>
-        <div class="cat-card-body">
-          <div class="cat-card-name">Cordiais</div>
-          <div class="cat-card-examples">Maracujá · Gengibre<br>Elderflower</div>
-        </div>
-        <div class="cat-card-footer">
-          <span class="cat-card-count">Em breve</span>
-          <span class="cat-card-arrow" style="color:var(--cat-3)">→</span>
-        </div>
-      </a>
-
-      <!-- 4 Xaropes -->
-      <a href="xaropes/" class="cat-card">
-        <div class="cat-card-accent" style="background:var(--cat-4)"></div>
-        <div class="cat-card-body">
-          <div class="cat-card-name">Xaropes</div>
-          <div class="cat-card-examples">Demerara · Orgeat<br>Lavanda · Gengibre</div>
-        </div>
-        <div class="cat-card-footer">
-          <span class="cat-card-count">1 receita</span>
-          <span class="cat-card-arrow" style="color:var(--cat-4)">→</span>
-        </div>
-      </a>
-
-      <!-- 5 Vermutes -->
-      <a href="vermutes/" class="cat-card">
-        <div class="cat-card-accent" style="background:var(--cat-5)"></div>
-        <div class="cat-card-body">
-          <div class="cat-card-name">Vermutes e Aromatizados</div>
-          <div class="cat-card-examples">Branco · Tinto<br>Quinado</div>
-        </div>
-        <div class="cat-card-footer">
-          <span class="cat-card-count">Em breve</span>
-          <span class="cat-card-arrow" style="color:var(--cat-5)">→</span>
-        </div>
-      </a>
-
-      <!-- 6 Fermentados -->
-      <a href="fermentados/" class="cat-card">
-        <div class="cat-card-accent" style="background:var(--cat-6)"></div>
-        <div class="cat-card-body">
-          <div class="cat-card-name">Fermentados</div>
-          <div class="cat-card-examples">Kombucha · Lactofermentados<br>Vinagres</div>
-        </div>
-        <div class="cat-card-footer">
-          <span class="cat-card-count">Em breve</span>
-          <span class="cat-card-arrow" style="color:var(--cat-6)">→</span>
-        </div>
-      </a>
-
-      <!-- 7 Extratos -->
-      <a href="extratos/" class="cat-card">
-        <div class="cat-card-accent" style="background:var(--cat-7)"></div>
-        <div class="cat-card-body">
-          <div class="cat-card-name">Extratos</div>
-          <div class="cat-card-examples">Baunilha · Cítricos<br>Oleoresinas</div>
-        </div>
-        <div class="cat-card-footer">
-          <span class="cat-card-count">Em breve</span>
-          <span class="cat-card-arrow" style="color:var(--cat-7)">→</span>
-        </div>
-      </a>
-
-      <!-- 8 Drinks -->
-      <a href="drinks/" class="cat-card">
-        <div class="cat-card-accent" style="background:var(--cat-8)"></div>
-        <div class="cat-card-body">
-          <div class="cat-card-name">Drinks</div>
-          <div class="cat-card-examples">Autorais · Clássicos<br>Temporada</div>
-        </div>
-        <div class="cat-card-footer">
-          <span class="cat-card-count">Em breve</span>
-          <span class="cat-card-arrow" style="color:var(--cat-8)">→</span>
-        </div>
-      </a>
-
-      <!-- 9 Refrigerantes -->
-      <a href="refrigerantes/" class="cat-card">
-        <div class="cat-card-accent" style="background:var(--cat-9)"></div>
-        <div class="cat-card-body">
-          <div class="cat-card-name">Refrigerantes</div>
-          <div class="cat-card-examples">Água tônica · Ginger Ale<br>Sodas botânicas</div>
-        </div>
-        <div class="cat-card-footer">
-          <span class="cat-card-count">Em breve</span>
-          <span class="cat-card-arrow" style="color:var(--cat-9)">→</span>
-        </div>
-      </a>
-
+    <div class="grid" id="grid-categorias">
+      <div class="loading-state">Carregando catálogo…</div>
     </div>
-
-    <!-- FOOTER -->
-    <footer>
-      <span class="footer-text">Alta Coquetelaria Caseira · Portfólio Artesanal</span>
-      <span class="footer-sig">@seuOtto</span>
-    </footer>
-
   </div>
 </main>
+
+<footer>
+  <div class="footer-inner">
+    <span class="footer-text">Alta Coquetelaria Caseira · Portfólio Artesanal</span>
+    <span class="footer-sig">@seuOtto</span>
+  </div>
+</footer>
+
+<script>
+/* ============================================================
+   PÁGINA INICIAL — renderiza 11 categorias a partir do JSON
+============================================================ */
+(async function() {
+
+  // 1. Carregar JSON
+  let data;
+  try {
+    const res = await fetch(`receitas.json?t=${Date.now()}`, { cache: 'no-cache' });
+    data = await res.json();
+  } catch (err) {
+    document.getElementById('grid-categorias').innerHTML =
+      '<div class="loading-state">Erro ao carregar catálogo</div>';
+    console.error(err);
+    return;
+  }
+
+  // 2. Contadores do hero
+  const totalCats = data.categorias.length;
+  const totalReceitas = data.receitas.length;
+  document.getElementById('total-categorias').textContent = totalCats;
+  document.getElementById('total-receitas').textContent = totalReceitas;
+
+  // 3. Ordenar categorias pela ordem definida no JSON
+  const cats = [...data.categorias].sort((a, b) => a.ordem - b.ordem);
+
+  // 4. Contar receitas por categoria (e nomes das receitas reais)
+  const receitasPorCat = {};
+  for (const r of data.receitas) {
+    if (!receitasPorCat[r.categoria]) receitasPorCat[r.categoria] = [];
+    receitasPorCat[r.categoria].push(r);
+  }
+
+  // 5. Buscar nomes reais das receitas (fetch paralelo dos metadados)
+  const receitasComNome = await Promise.all(
+    data.receitas.map(async (r) => {
+      try {
+        const res = await fetch(`${r.categoria}/${r.slug}.html?t=${Date.now()}`, { cache: 'no-cache' });
+        const html = await res.text();
+        const match = html.match(/<meta name="receita-nome"\s+content="([^"]+)"/);
+        return { ...r, nome: match ? match[1] : r.slug };
+      } catch {
+        return { ...r, nome: r.slug };
+      }
+    })
+  );
+
+  // 6. Mapa de nomes por categoria
+  const nomesPorCat = {};
+  for (const r of receitasComNome) {
+    if (!nomesPorCat[r.categoria]) nomesPorCat[r.categoria] = [];
+    nomesPorCat[r.categoria].push(r.nome);
+  }
+
+  // 7. Renderizar cards
+  const grid = document.getElementById('grid-categorias');
+  grid.innerHTML = '';
+
+  cats.forEach((cat) => {
+    const receitas = receitasPorCat[cat.slug] || [];
+    const count = receitas.length;
+    const cor = `var(--cat-${cat.slug})`;
+
+    // Exemplos: se houver receitas reais, mostra elas; senão mostra exemplos do JSON
+    let examplesText;
+    if (count > 0) {
+      examplesText = nomesPorCat[cat.slug].slice(0, 2).join('\n');
+    } else {
+      examplesText = cat.exemplos || '';
+    }
+
+    // Label de contador
+    let countLabel;
+    if (count === 0) countLabel = 'Em breve';
+    else if (count === 1) countLabel = '1 receita';
+    else countLabel = `${count} receitas`;
+
+    const card = document.createElement('a');
+    card.href = `${cat.slug}/`;
+    card.className = 'cat-card';
+    card.innerHTML = `
+      <div class="cat-card-accent" style="background:${cor}"></div>
+      <div class="cat-card-body">
+        <div class="cat-card-name">${escapeHtml(cat.nome)}</div>
+        <div class="cat-card-examples">${escapeHtml(examplesText)}</div>
+      </div>
+      <div class="cat-card-footer">
+        <span class="cat-card-count">${countLabel}</span>
+        <span class="cat-card-arrow" style="color:${cor}">→</span>
+      </div>
+    `;
+    grid.appendChild(card);
+  });
+
+  // ─── Helper ───
+  function escapeHtml(str) {
+    if (!str) return '';
+    return String(str)
+      .replace(/&/g, '&amp;')
+      .replace(/</g, '&lt;')
+      .replace(/>/g, '&gt;')
+      .replace(/"/g, '&quot;');
+  }
+
+})();
+</script>
 
 </body>
 </html>
