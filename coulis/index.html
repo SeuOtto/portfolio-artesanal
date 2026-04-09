@@ -540,7 +540,7 @@ footer {
   // 2. Carregar receitas.json (na raiz do site)
   let data;
   try {
-    const res = await fetch('../receitas.json', { cache: 'no-cache' });
+    const res = await fetch(`../receitas.json?t=${Date.now()}`, { cache: 'no-cache' });
     data = await res.json();
   } catch (err) {
     document.getElementById('grid').innerHTML =
@@ -582,7 +582,7 @@ footer {
   const receitasComMeta = await Promise.all(
     receitasCat.map(async (r) => {
       try {
-        const res = await fetch(`${r.slug}.html`, { cache: 'no-cache' });
+        const res = await fetch(`${r.slug}.html?t=${Date.now()}`, { cache: 'no-cache' });
         const html = await res.text();
         const parser = new DOMParser();
         const doc = parser.parseFromString(html, 'text/html');
@@ -674,7 +674,6 @@ footer {
         <div class="recipe-card-body">
           <div class="recipe-card-label">${escapeHtml(labelTxt)}</div>
           <div class="recipe-card-title">${tituloHTML}</div>
-          <div class="recipe-card-desc">${escapeHtml(r.descricao || '')}</div>
         </div>
         <div class="recipe-card-footer">
           <span class="recipe-card-meta">${escapeHtml(metaFooter)}</span>
