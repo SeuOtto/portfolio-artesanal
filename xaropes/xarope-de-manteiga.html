@@ -1,0 +1,653 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<!-- ============================================================
+  METADADOS DA RECEITA
+============================================================ -->
+<meta name="receita-categoria"        content="xaropes">
+<meta name="receita-slug"             content="xarope-de-manteiga">
+<meta name="receita-nome"             content="Xarope de Manteiga">
+<meta name="receita-subtitulo"        content="">
+<meta name="receita-descricao"        content="Xarope aromático infusionado com pimenta-da-Jamaica, manteiga e mel. Textura cremosa estável.">
+<meta name="receita-rendimento"       content="550ml">
+<meta name="receita-abv"              content="N/A">
+<meta name="receita-stat1-valor"      content="">
+<meta name="receita-stat1-label"      content="">
+<meta name="receita-stat2-valor"      content="">
+<meta name="receita-stat2-label"      content="">
+<meta name="receita-stat3-valor"      content="">
+<meta name="receita-stat3-label"      content="">
+<meta name="receita-stat4-valor"      content="">
+<meta name="receita-stat4-label"      content="">
+<meta name="receita-nome-cientifico"  content="">
+<meta name="receita-destaque"         content="false">
+
+<title>Xarope de Manteiga — Portfólio Artesanal</title>
+
+<style>
+@import url('https://api.fontshare.com/v2/css?f[]=gambetta@300,400,600,300i,400i,600i&f[]=satoshi@300,400,500&display=swap');
+
+:root {
+  --bg:               #1C2B1A;
+  --bg-surface:       rgba(255,255,255,0.03);
+  --bg-surface-hover: rgba(255,255,255,0.056);
+  --text-primary:     #F5F0E8;
+  --text-secondary:   rgba(245,240,232,0.72);
+  --text-muted:       rgba(245,240,232,0.45);
+  --text-hint:        rgba(245,240,232,0.38);
+  --border-default:   rgba(106,158,82,0.25);
+  --border-emphasis:  rgba(106,158,82,0.50);
+  --border-subtle:    rgba(245,240,232,0.08);
+
+  /* Categoria 4 — Xaropes */
+  --accent-primary:   #6A9E52;
+  --accent-light:     #A8CC90;
+  --accent-border:    rgba(106,158,82,0.50);
+  --accent-bg:        rgba(106,158,82,0.08);
+}
+
+* { margin: 0; padding: 0; box-sizing: border-box; }
+
+body {
+  background: var(--bg);
+  font-family: 'Satoshi', 'Helvetica Neue', sans-serif;
+  color: var(--text-primary);
+  min-height: 100vh;
+}
+
+/* ── NAV ── */
+nav {
+  background: rgba(255,255,255,0.03);
+  border-bottom: 1px solid var(--border-subtle);
+  height: 64px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 40px;
+  position: sticky;
+  top: 0;
+  z-index: 10;
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+}
+
+.nav-brand { display: flex; align-items: baseline; gap: 12px; }
+
+.nav-logo {
+  font-family: 'Gambetta', 'Georgia', serif;
+  font-size: 18px;
+  font-weight: 400;
+  color: var(--text-primary);
+  letter-spacing: -0.02em;
+  text-decoration: none;
+}
+
+.nav-logo em { font-style: italic; color: var(--accent-primary); }
+
+.nav-tagline {
+  font-size: 10px;
+  font-weight: 500;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--text-hint);
+}
+
+.nav-links {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 12px;
+}
+
+.nav-link {
+  color: var(--text-muted);
+  text-decoration: none;
+  transition: color 0.2s;
+}
+
+.nav-link:hover { color: var(--text-primary); }
+.nav-sep { color: var(--text-hint); }
+.nav-current { color: var(--accent-primary); font-weight: 500; }
+
+.page {
+  max-width: 860px;
+  margin: 0 auto;
+  padding: 0 24px 80px;
+}
+
+@keyframes fadeUp {
+  from { opacity: 0; transform: translateY(16px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+/* HERO */
+.hero {
+  padding: 64px 0 48px;
+  display: grid;
+  grid-template-columns: 1fr auto;
+  align-items: end;
+  gap: 32px;
+  border-bottom: 1px solid var(--border-default);
+  margin-bottom: 56px;
+  animation: fadeUp 0.8s ease both;
+}
+
+.hero-label {
+  font-size: 10px;
+  font-weight: 500;
+  letter-spacing: 0.25em;
+  text-transform: uppercase;
+  color: var(--accent-primary);
+  margin-bottom: 16px;
+}
+
+.hero h1 {
+  font-family: 'Gambetta', 'Georgia', serif;
+  font-size: clamp(38px, 6vw, 58px);
+  font-weight: 300;
+  line-height: 1.05;
+  color: var(--text-primary);
+  letter-spacing: -0.02em;
+}
+
+.hero h1 em {
+  font-style: italic;
+  color: var(--accent-light);
+}
+
+.hero-sub {
+  font-size: 13px;
+  font-weight: 300;
+  color: var(--text-muted);
+  margin-top: 16px;
+  line-height: 1.65;
+  max-width: 420px;
+}
+
+.hero-badge {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 4px;
+  background: var(--accent-bg);
+  border: 1px solid var(--border-default);
+  border-radius: 16px;
+  padding: 24px;
+  white-space: nowrap;
+  flex-shrink: 0;
+}
+
+.badge-num {
+  font-family: 'Gambetta', 'Georgia', serif;
+  font-size: 40px;
+  font-weight: 300;
+  color: var(--accent-primary);
+  line-height: 1;
+}
+
+.badge-label {
+  font-size: 10px;
+  font-weight: 400;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: var(--text-hint);
+  margin-top: 4px;
+}
+
+/* SEÇÃO */
+.section { margin-bottom: 56px; }
+
+.section-header {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  margin-bottom: 32px;
+}
+
+.section-marker {
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  background: var(--accent-primary);
+  color: var(--bg);
+  font-size: 11px;
+  font-weight: 500;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+.section-title {
+  font-family: 'Gambetta', 'Georgia', serif;
+  font-size: 26px;
+  font-weight: 400;
+  color: var(--text-primary);
+  letter-spacing: 0.01em;
+}
+
+.section-line {
+  flex: 1;
+  height: 1px;
+  background: var(--border-default);
+}
+
+/* INGREDIENTES */
+.ingredients-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 8px;
+}
+
+.ing-card {
+  background: var(--bg-surface);
+  border: 1px solid var(--border-default);
+  border-radius: 8px;
+  padding: 16px;
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  transition: background 0.2s;
+}
+
+.ing-card:hover { background: var(--bg-surface-hover); }
+
+.ing-card.highlight {
+  border-color: var(--accent-border);
+  background: var(--accent-bg);
+  grid-column: 1 / -1;
+}
+
+.ing-dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: var(--accent-primary);
+  flex-shrink: 0;
+}
+
+.ing-amount {
+  font-family: 'Gambetta', 'Georgia', serif;
+  font-size: 20px;
+  font-weight: 400;
+  color: var(--accent-light);
+  line-height: 1;
+  min-width: 56px;
+  flex-shrink: 0;
+}
+
+.ing-name {
+  font-size: 13px;
+  font-weight: 500;
+  color: var(--text-primary);
+  line-height: 1.3;
+}
+
+.ing-note {
+  font-size: 11px;
+  font-weight: 400;
+  color: var(--text-muted);
+  margin-top: 2px;
+}
+
+/* STEPS */
+.steps { display: flex; flex-direction: column; }
+
+.step {
+  display: grid;
+  grid-template-columns: 48px 1fr;
+  position: relative;
+}
+
+.step:not(:last-child) .step-line {
+  position: absolute;
+  left: 24px;
+  top: 40px;
+  bottom: 0;
+  width: 2px;
+  background: var(--border-default);
+}
+
+.step-left {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding-top: 4px;
+  position: relative;
+  z-index: 1;
+}
+
+.step-circle {
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  border: 2px solid var(--accent-primary);
+  background: var(--bg);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: 'Satoshi', 'Helvetica Neue', sans-serif;
+  font-size: 13px;
+  font-weight: 500;
+  line-height: 1;
+  color: var(--accent-primary);
+  flex-shrink: 0;
+  user-select: none;
+}
+
+.step-right { padding: 2px 0 40px 16px; }
+
+.step-title {
+  font-family: 'Gambetta', 'Georgia', serif;
+  font-size: 18px;
+  font-weight: 600;
+  color: var(--text-primary);
+  margin-bottom: 8px;
+  line-height: 1.2;
+}
+
+.step-body {
+  font-size: 14px;
+  font-weight: 300;
+  color: var(--text-secondary);
+  line-height: 1.75;
+}
+
+.step-body strong { color: var(--accent-light); font-weight: 500; }
+
+/* MÉTODO */
+.method-block {
+  background: var(--bg-surface);
+  border: 1px solid var(--border-default);
+  border-radius: 8px;
+  padding: 24px;
+}
+
+.method-body {
+  font-size: 14px;
+  font-weight: 300;
+  color: var(--text-secondary);
+  line-height: 1.75;
+}
+
+.method-body strong {
+  color: var(--accent-light);
+  font-weight: 500;
+}
+
+.method-body p + p {
+  margin-top: 16px;
+}
+
+/* NOTAS */
+.notes-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 8px;
+}
+
+.note-card {
+  background: var(--bg-surface);
+  border: 1px solid var(--border-default);
+  border-radius: 8px;
+  padding: 16px;
+}
+
+.note-card.warn {
+  border-color: rgba(106,158,82,0.45);
+  background: rgba(106,158,82,0.05);
+}
+
+.note-icon { font-size: 16px; margin-bottom: 8px; }
+
+.note-title {
+  font-size: 11px;
+  font-weight: 500;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--accent-primary);
+  margin-bottom: 6px;
+}
+
+.note-body {
+  font-size: 12px;
+  font-weight: 300;
+  color: var(--text-muted);
+  line-height: 1.65;
+}
+
+/* FOOTER */
+.page-footer {
+  border-top: 1px solid var(--border-default);
+  padding-top: 32px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 8px;
+}
+
+.footer-text {
+  font-size: 11px;
+  color: var(--text-hint);
+  letter-spacing: 0.08em;
+}
+
+.footer-sig {
+  font-family: 'Gambetta', 'Georgia', serif;
+  font-size: 14px;
+  font-style: italic;
+  color: rgba(106,158,82,0.50);
+}
+
+/* RESPONSIVIDADE */
+@media (max-width: 600px) {
+  nav { padding: 0 20px; }
+  .nav-tagline { display: none; }
+  .nav-sep, .nav-current { display: none; }
+  .nav-links { gap: 0; }
+  .nav-link-categoria { display: none; }
+  .hero { grid-template-columns: 1fr; }
+  .hero-badge { display: none; }
+  .notes-grid { grid-template-columns: 1fr; }
+}
+</style>
+</head>
+<body>
+
+<nav>
+  <div class="nav-brand">
+    <a href="../" class="nav-logo">Alta <em>Coquetelaria</em></a>
+    <div class="nav-tagline">Portfólio Artesanal</div>
+  </div>
+  <div class="nav-links">
+    <a href="../" class="nav-link nav-link-inicio">Início</a>
+    <span class="nav-sep">›</span>
+    <a href="./" class="nav-link nav-link-categoria">Xaropes</a>
+    <span class="nav-sep">›</span>
+    <span class="nav-current">Xarope de Manteiga</span>
+  </div>
+</nav>
+
+<div class="page">
+
+  <header class="hero">
+    <div>
+      <div class="hero-label">Xarope · Aromático</div>
+      <h1>Xarope de<br>Manteiga</h1>
+      <p class="hero-sub">Xarope aromático infusionado com pimenta-da-Jamaica, manteiga e mel. Textura cremosa e estável, enriquecido por gomas naturais.</p>
+    </div>
+    <div class="hero-badge">
+      <span class="badge-num">550</span>
+      <span class="badge-label">ml rendimento</span>
+    </div>
+  </header>
+
+  <section class="section">
+    <div class="section-header">
+      <div class="section-marker">—</div>
+      <h2 class="section-title">Ingredientes</h2>
+      <div class="section-line"></div>
+    </div>
+
+    <div class="ingredients-grid">
+
+      <div class="ing-card highlight">
+        <div class="ing-dot"></div>
+        <div class="ing-amount">150g</div>
+        <div>
+          <div class="ing-name">Manteiga</div>
+          <div class="ing-note">Derretida e infusionada com pimenta-da-Jamaica</div>
+        </div>
+      </div>
+
+      <div class="ing-card">
+        <div class="ing-dot"></div>
+        <div class="ing-amount">12g</div>
+        <div>
+          <div class="ing-name">Pimenta-da-Jamaica</div>
+          <div class="ing-note">Grãos inteiros · maceração mínima 48 horas</div>
+        </div>
+      </div>
+
+      <div class="ing-card">
+        <div class="ing-dot"></div>
+        <div class="ing-amount">200g</div>
+        <div>
+          <div class="ing-name">Xarope de açúcar 2:1</div>
+          <div class="ing-note">200g açúcar refinado + 100ml água filtrada</div>
+        </div>
+      </div>
+
+      <div class="ing-card">
+        <div class="ing-dot"></div>
+        <div class="ing-amount">122g + 78ml</div>
+        <div>
+          <div class="ing-name">Xarope de mel</div>
+          <div class="ing-note">Mel + água destilada · proporção 1:0,64 · rendimento ~200ml</div>
+        </div>
+      </div>
+
+      <div class="ing-card">
+        <div class="ing-dot"></div>
+        <div class="ing-amount">2,7g</div>
+        <div>
+          <div class="ing-name">Goma arábica</div>
+          <div class="ing-note">Emulsionante natural</div>
+        </div>
+      </div>
+
+      <div class="ing-card">
+        <div class="ing-dot"></div>
+        <div class="ing-amount">0,3g</div>
+        <div>
+          <div class="ing-name">Goma xantana</div>
+          <div class="ing-note">Estabilizante · proporção 9:1 com arábica</div>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="section-header">
+      <div class="section-marker">—</div>
+      <h2 class="section-title">Preparo</h2>
+      <div class="section-line"></div>
+    </div>
+
+    <div class="steps">
+
+      <div class="step">
+        <div class="step-line"></div>
+        <div class="step-left"><div class="step-circle">1</div></div>
+        <div class="step-right">
+          <div class="step-title">Macere a manteiga com pimenta</div>
+          <div class="step-body">Derreta a manteiga em fogo baixo e adicione os grãos de pimenta-da-Jamaica inteiros. Coloque na geladeira para macerar por <strong>48 horas a 7 dias</strong>.</div>
+        </div>
+      </div>
+
+      <div class="step">
+        <div class="step-line"></div>
+        <div class="step-left"><div class="step-circle">2</div></div>
+        <div class="step-right">
+          <div class="step-title">Coe a manteiga aromatizada</div>
+          <div class="step-body">Derreta a manteiga novamente e coe com cuidado, descartando completamente os grãos de pimenta. A manteiga deve ficar límpida.</div>
+        </div>
+      </div>
+
+      <div class="step">
+        <div class="step-line"></div>
+        <div class="step-left"><div class="step-circle">3</div></div>
+        <div class="step-right">
+          <div class="step-title">Prepare os xaropes</div>
+          <div class="step-body">Dissolva <strong>200g de açúcar em 100ml de água filtrada</strong> (proporção 2:1, pode ser a frio ou levemente aquecido). Para o xarope de mel, use <strong>122g de mel + 78ml de água destilada</strong> (proporção 1:0,64). Deixe ambos resfriar completamente.</div>
+        </div>
+      </div>
+
+      <div class="step">
+        <div class="step-line"></div>
+        <div class="step-left"><div class="step-circle">4</div></div>
+        <div class="step-right">
+          <div class="step-title">Emulsione os componentes</div>
+          <div class="step-body">Com um mixer de mão ou liquidificador, misture a manteiga aromatizada com o xarope de açúcar, o xarope de mel, a goma arábica e a goma xantana. Bata até homogeneizar completamente. O resultado será cremoso e estável.</div>
+        </div>
+      </div>
+
+      <div class="step">
+        <div class="step-left"><div class="step-circle">5</div></div>
+        <div class="step-right">
+          <div class="step-title">Envase e armazene</div>
+          <div class="step-body">Transfira para garrafa limpa e bem fechada. <strong>Armazene na geladeira.</strong> Refrigeração é obrigatória para manter a estabilidade da gordura e preservar o sabor.</div>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="section-header">
+      <div class="section-marker">—</div>
+      <h2 class="section-title">Notas Técnicas</h2>
+      <div class="section-line"></div>
+    </div>
+
+    <div class="notes-grid">
+
+      <div class="note-card">
+        <div class="note-icon">🫙</div>
+        <div class="note-title">Shelf Life</div>
+        <div class="note-body">Sem conservante: 2–3 semanas refrigerado a 4°C. Com solução conservante: 4–6 semanas refrigerado. A gordura é o componente crítico — oxidação é inevitável com o tempo. Descarte se notar separação de fases, odor ranço ou textura granulosa.</div>
+      </div>
+
+      <div class="note-card">
+        <div class="note-icon">🧈</div>
+        <div class="note-title">Proporção Mel:Água</div>
+        <div class="note-body">A proporção 1:0,64 (mel:água) é crítica. Um quilo de mel requer 640ml de água destilada. Esta relação cria viscosidade apropriada e permite que o mel se dissolva completamente sem cristalizar.</div>
+      </div>
+
+      <div class="note-card">
+        <div class="note-icon">⚙️</div>
+        <div class="note-title">Gomas — Proporção 9:1</div>
+        <div class="note-body">A combinação de goma arábica e xantana na proporção 9:1 (2,7g : 0,3g) é sugerida por Dave Arnold em <em>Liquid Intelligence</em> na falta de um produto específico (methylcellulose ou similar) que ele menciona. Esta combinação estabiliza a emulsão gordurosa de forma elegante.</div>
+      </div>
+
+      <div class="note-card">
+        <div class="note-icon">🧪</div>
+        <div class="note-title">Solução Conservante</div>
+        <div class="note-body"><strong>Fórmula (conforme Darcy O'Neal, Art of Drink):</strong> dissolva 15g de benzoato de sódio e 25g de sorbato de potássio em água destilada até completar 100ml em frasco conta-gotas. <strong>Dosagem:</strong> 1ml desta solução por litro de xarope. <strong>Resultado:</strong> 150 ppm benzoato de sódio + 250 ppm sorbato de potássio. Níveis seguros, imperceptíveis ao paladar, com efeito sinergético em pH ácido (3,5–4,0).</div>
+      </div>
+
+    </div>
+  </section>
+
+  <footer class="page-footer">
+    <span class="footer-text">Xarope de Manteiga · Xaropes</span>
+    <span class="footer-sig">@seuOtto</span>
+  </footer>
+
+</div>
+</body>
+</html>
