@@ -1,0 +1,837 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<meta name="receita-categoria"        content="sodas">
+<meta name="receita-slug"             content="tarkuna">
+<meta name="receita-nome"             content="Tarkuna">
+<meta name="receita-subtitulo"        content="Refrigerante Soviético de Estragão">
+<meta name="receita-descricao"        content="Refrigerante clássico de cor verde brilhante, originário da Geórgia em 1887. Sabor herbáceo de estragão com notas de baunilha e limão, baseado em patente soviética de 1986.">
+<meta name="receita-rendimento"       content="variável">
+<meta name="receita-abv"              content="N/A">
+<meta name="receita-stat1-valor"      content="3:2">
+<meta name="receita-stat1-label"      content="Ratio Xarope">
+<meta name="receita-stat2-valor"      content="2ml">
+<meta name="receita-stat2-label"      content="Essência/480ml">
+<meta name="receita-stat3-valor"      content="50%">
+<meta name="receita-stat3-label"      content="ABV Base">
+<meta name="receita-stat4-valor"      content="¾ oz">
+<meta name="receita-stat4-label"      content="Xarope/240ml">
+<meta name="receita-nome-cientifico"  content="Artemisia dracunculus">
+<meta name="receita-destaque"         content="false">
+
+<title>Tarkuna — Portfólio Artesanal</title>
+
+<style>
+@import url('https://api.fontshare.com/v2/css?f[]=gambetta@300,400,600,300i,400i,600i&f[]=satoshi@300,400,500&display=swap');
+
+:root {
+  --bg:               #1C2B1A;
+  --bg-surface:       rgba(255,255,255,0.03);
+  --bg-surface-hover: rgba(255,255,255,0.056);
+  --text-primary:     #F5F0E8;
+  --text-secondary:   rgba(245,240,232,0.72);
+  --text-muted:       rgba(245,240,232,0.45);
+  --text-hint:        rgba(245,240,232,0.38);
+  --border-default:   rgba(74,154,122,0.25);
+  --border-emphasis:  rgba(74,154,122,0.50);
+  --border-subtle:    rgba(245,240,232,0.08);
+
+  /* Categoria 11 — Sodas */
+  --accent-primary:   #4A9A7A;
+  --accent-light:     #88CCB4;
+  --accent-border:    rgba(74,154,122,0.50);
+  --accent-bg:        rgba(74,154,122,0.08);
+}
+
+* { margin: 0; padding: 0; box-sizing: border-box; }
+
+body {
+  background: var(--bg);
+  font-family: 'Satoshi', 'Helvetica Neue', sans-serif;
+  color: var(--text-primary);
+  min-height: 100vh;
+}
+
+.page {
+  max-width: 860px;
+  margin: 0 auto;
+  padding: 0 24px 80px;
+}
+
+@keyframes fadeUp {
+  from { opacity: 0; transform: translateY(16px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+/* NAV */
+nav {
+  background: rgba(255,255,255,0.03);
+  border-bottom: 1px solid var(--border-subtle);
+  height: 64px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 40px;
+  position: sticky;
+  top: 0;
+  z-index: 10;
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+}
+
+.nav-brand { display: flex; align-items: baseline; gap: 12px; }
+
+.nav-logo {
+  font-family: 'Gambetta', 'Georgia', serif;
+  font-size: 18px;
+  font-weight: 400;
+  color: var(--text-primary);
+  letter-spacing: -0.02em;
+  text-decoration: none;
+}
+
+.nav-logo em { font-style: italic; color: var(--accent-primary); }
+
+.nav-tagline {
+  font-size: 10px;
+  font-weight: 500;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--text-hint);
+}
+
+.nav-links {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 12px;
+}
+
+.nav-link {
+  color: var(--text-muted);
+  text-decoration: none;
+  transition: color 0.2s;
+}
+
+.nav-link:hover { color: var(--text-primary); }
+.nav-sep { color: var(--text-hint); }
+.nav-current { color: var(--accent-primary); font-weight: 500; }
+
+/* HERO */
+.hero {
+  padding: 64px 0 48px;
+  display: grid;
+  grid-template-columns: 1fr;
+  align-items: end;
+  gap: 32px;
+  border-bottom: 1px solid var(--border-default);
+  margin-bottom: 56px;
+  animation: fadeUp 0.8s ease both;
+}
+
+.hero-label {
+  font-size: 10px;
+  font-weight: 500;
+  letter-spacing: 0.25em;
+  text-transform: uppercase;
+  color: var(--accent-primary);
+  margin-bottom: 16px;
+}
+
+.hero h1 {
+  font-family: 'Gambetta', 'Georgia', serif;
+  font-size: clamp(38px, 6vw, 58px);
+  font-weight: 300;
+  line-height: 1.05;
+  color: var(--text-primary);
+  letter-spacing: -0.02em;
+}
+
+.hero h1 em { font-style: italic; color: var(--accent-light); }
+
+.hero-sub {
+  font-family: 'Satoshi', 'Helvetica Neue', sans-serif;
+  font-size: 13px;
+  font-weight: 300;
+  color: var(--text-muted);
+  margin-top: 16px;
+  line-height: 1.65;
+  max-width: 560px;
+}
+
+/* STATS ROW */
+.stats {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 1px;
+  background: var(--border-default);
+  border: 1px solid var(--border-default);
+  border-radius: 16px;
+  overflow: hidden;
+  margin-bottom: 56px;
+  animation: fadeUp 0.8s 0.1s ease both;
+}
+
+.stat {
+  background: rgba(255,255,255,0.025);
+  padding: 16px;
+  text-align: center;
+}
+
+.stat-value {
+  font-family: 'Gambetta', 'Georgia', serif;
+  font-size: 24px;
+  font-weight: 400;
+  color: var(--accent-light);
+  line-height: 1;
+  margin-bottom: 6px;
+}
+
+.stat-label {
+  font-size: 10px;
+  font-weight: 500;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--text-hint);
+}
+
+/* SEÇÃO */
+.section { margin-bottom: 56px; }
+
+.section-header {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  margin-bottom: 32px;
+}
+
+.section-marker {
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  background: var(--accent-primary);
+  color: var(--bg);
+  font-size: 11px;
+  font-weight: 500;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  font-family: 'Satoshi', sans-serif;
+}
+
+.section-title {
+  font-family: 'Gambetta', 'Georgia', serif;
+  font-size: 26px;
+  font-weight: 400;
+  color: var(--text-primary);
+  letter-spacing: 0.01em;
+}
+
+.section-line {
+  flex: 1;
+  height: 1px;
+  background: var(--border-default);
+}
+
+/* BLOCO DE FASE — título interno de ingredientes */
+.phase-block { margin-bottom: 24px; }
+.phase-block:last-child { margin-bottom: 0; }
+
+.phase-title {
+  font-size: 10px;
+  font-weight: 500;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--accent-primary);
+  padding-bottom: 12px;
+  border-bottom: 1px solid var(--border-subtle);
+  margin-bottom: 8px;
+}
+
+/* INGREDIENTES */
+.ingredients-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 8px;
+}
+
+.ing-card {
+  background: var(--bg-surface);
+  border: 1px solid var(--border-default);
+  border-radius: 8px;
+  padding: 16px;
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  transition: background 0.2s;
+}
+
+.ing-card:hover { background: var(--bg-surface-hover); }
+
+.ing-card.highlight {
+  border-color: var(--accent-border);
+  background: var(--accent-bg);
+  grid-column: 1 / -1;
+}
+
+.ing-card.full {
+  grid-column: 1 / -1;
+}
+
+.ing-dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: var(--accent-primary);
+  flex-shrink: 0;
+}
+
+.ing-amount {
+  font-family: 'Gambetta', 'Georgia', serif;
+  font-size: 20px;
+  font-weight: 400;
+  color: var(--accent-light);
+  line-height: 1;
+  min-width: 56px;
+  flex-shrink: 0;
+}
+
+.ing-amount.ing-amount-sm {
+  font-size: 15px;
+  min-width: 72px;
+}
+
+.ing-name {
+  font-size: 13px;
+  font-weight: 500;
+  color: var(--text-primary);
+  line-height: 1.3;
+}
+
+.ing-note {
+  font-size: 11px;
+  font-weight: 400;
+  color: var(--text-muted);
+  margin-top: 2px;
+}
+
+/* PASSO A PASSO */
+.steps { display: flex; flex-direction: column; }
+
+.step {
+  display: grid;
+  grid-template-columns: 48px 1fr;
+  position: relative;
+}
+
+.step:not(:last-child) .step-line {
+  position: absolute;
+  left: 24px;
+  top: 40px;
+  bottom: 0;
+  width: 2px;
+  background: var(--border-default);
+}
+
+.step-left {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding-top: 4px;
+  position: relative;
+  z-index: 1;
+}
+
+.step-circle {
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  border: 2px solid var(--accent-primary);
+  background: var(--bg);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: 'Satoshi', 'Helvetica Neue', sans-serif;
+  font-size: 13px;
+  font-weight: 500;
+  line-height: 1;
+  color: var(--accent-primary);
+  flex-shrink: 0;
+  user-select: none;
+}
+
+.step-right { padding: 2px 0 40px 16px; }
+
+.step-title {
+  font-family: 'Gambetta', 'Georgia', serif;
+  font-size: 18px;
+  font-weight: 600;
+  color: var(--text-primary);
+  margin-bottom: 8px;
+  line-height: 1.2;
+}
+
+.step-body {
+  font-size: 14px;
+  font-weight: 300;
+  color: var(--text-secondary);
+  line-height: 1.75;
+}
+
+.step-body strong { color: var(--accent-light); font-weight: 500; }
+
+.step-tag {
+  display: inline-block;
+  background: var(--accent-bg);
+  border: 1px solid var(--accent-border);
+  color: var(--accent-light);
+  font-size: 10px;
+  font-weight: 500;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  padding: 4px 8px;
+  border-radius: 4px;
+  margin-top: 10px;
+}
+
+/* STEP LABEL DE FASE — separador dentro do passo a passo */
+.step-phase-label {
+  font-size: 10px;
+  font-weight: 500;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--accent-primary);
+  padding: 0 0 16px 64px;
+  border-bottom: 1px solid var(--border-subtle);
+  margin-bottom: 0;
+}
+
+/* NOTAS TÉCNICAS */
+.notes-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 8px;
+}
+
+.note-card {
+  background: var(--bg-surface);
+  border: 1px solid var(--border-default);
+  border-radius: 8px;
+  padding: 16px;
+}
+
+.note-card.warn {
+  border-color: var(--accent-border);
+  background: var(--accent-bg);
+}
+
+.note-icon { font-size: 16px; margin-bottom: 8px; }
+
+.note-title {
+  font-size: 11px;
+  font-weight: 500;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--accent-primary);
+  margin-bottom: 6px;
+}
+
+.note-body {
+  font-size: 12px;
+  font-weight: 300;
+  color: var(--text-muted);
+  line-height: 1.65;
+}
+
+/* CURIOSIDADE / MITOLOGIA */
+.curiosity-block {
+  background: var(--bg-surface);
+  border: 1px solid var(--border-default);
+  border-radius: 8px;
+  padding: 24px;
+}
+
+.curiosity-label {
+  font-size: 10px;
+  font-weight: 500;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--accent-primary);
+  margin-bottom: 16px;
+}
+
+.curiosity-body {
+  font-size: 13px;
+  font-weight: 300;
+  color: var(--text-secondary);
+  line-height: 1.8;
+}
+
+.curiosity-body p + p { margin-top: 16px; }
+
+/* FONTE / CRÉDITO */
+.source-block {
+  border-top: 1px solid var(--border-subtle);
+  padding-top: 16px;
+  margin-top: 8px;
+  font-size: 11px;
+  font-weight: 400;
+  font-style: italic;
+  color: var(--text-hint);
+  line-height: 1.5;
+}
+
+/* FOOTER */
+.page-footer {
+  border-top: 1px solid var(--border-default);
+  padding-top: 32px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 8px;
+}
+
+.footer-text {
+  font-size: 11px;
+  color: var(--text-hint);
+  letter-spacing: 0.08em;
+}
+
+.footer-sig {
+  font-family: 'Gambetta', 'Georgia', serif;
+  font-size: 14px;
+  font-style: italic;
+  color: rgba(74,154,122,0.50);
+}
+
+/* RESPONSIVIDADE */
+@media (max-width: 600px) {
+  nav { padding: 0 20px; }
+  .nav-tagline { display: none; }
+  .nav-sep, .nav-current { display: none; }
+  .nav-links { gap: 0; }
+  .nav-link-categoria { display: none; }
+  .stats { grid-template-columns: repeat(2, 1fr) !important; }
+  .ingredients-grid { grid-template-columns: 1fr; }
+  .ing-card.highlight, .ing-card.full { grid-column: 1; }
+  .notes-grid { grid-template-columns: 1fr; }
+}
+</style>
+</head>
+<body>
+
+<nav>
+  <div class="nav-brand">
+    <a href="../" class="nav-logo">Alta <em>Coquetelaria</em></a>
+    <div class="nav-tagline">Portfólio Artesanal</div>
+  </div>
+  <div class="nav-links">
+    <a href="../" class="nav-link nav-link-inicio">Início</a>
+    <span class="nav-sep">›</span>
+    <a href="./" class="nav-link nav-link-categoria">Sodas</a>
+    <span class="nav-sep">›</span>
+    <span class="nav-current">Tarkuna</span>
+  </div>
+</nav>
+
+<div class="page">
+
+  <header class="hero">
+    <div>
+      <div class="hero-label">Soda · Refrigerante Histórico</div>
+      <h1>Tar<em>kuna</em></h1>
+      <p class="hero-sub">Clássico de cor verde brilhante, originário da Geórgia em 1887. Sabor herbáceo de estragão com notas de baunilha e limão. A receita a seguir é da União Soviética, de uma patente de 1986.</p>
+    </div>
+  </header>
+
+  <div class="stats">
+    <div class="stat">
+      <div class="stat-value">3:2</div>
+      <div class="stat-label">Ratio Xarope</div>
+    </div>
+    <div class="stat">
+      <div class="stat-value">2ml</div>
+      <div class="stat-label">Essência/480ml</div>
+    </div>
+    <div class="stat">
+      <div class="stat-value">50%</div>
+      <div class="stat-label">ABV Base</div>
+    </div>
+    <div class="stat">
+      <div class="stat-value">¾ oz</div>
+      <div class="stat-label">Xarope/240ml</div>
+    </div>
+  </div>
+
+
+  <!-- INGREDIENTES — ESSÊNCIA -->
+  <section class="section">
+    <div class="section-header">
+      <div class="section-marker">—</div>
+      <h2 class="section-title">Ingredientes da Essência</h2>
+      <div class="section-line"></div>
+    </div>
+
+    <div class="ingredients-grid">
+
+      <div class="ing-card highlight">
+        <div class="ing-dot"></div>
+        <div class="ing-amount">4ml</div>
+        <div>
+          <div class="ing-name">Óleo essencial de estragão</div>
+          <div class="ing-note">Artemisia dracunculus</div>
+        </div>
+      </div>
+
+      <div class="ing-card">
+        <div class="ing-dot"></div>
+        <div class="ing-amount ing-amount-sm">2,5ml</div>
+        <div>
+          <div class="ing-name">Óleo essencial de limão 5-fold</div>
+          <div class="ing-note">Ou 4ml de óleo de limão comum</div>
+        </div>
+      </div>
+
+      <div class="ing-card">
+        <div class="ing-dot"></div>
+        <div class="ing-amount">120ml</div>
+        <div>
+          <div class="ing-name">Álcool de cereais ou similar de alta graduação</div>
+          <div class="ing-note">Quantidade suficiente para atingir a marca de 120ml no frasco</div>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- INGREDIENTES — XAROPE -->
+  <section class="section">
+    <div class="section-header">
+      <div class="section-marker">—</div>
+      <h2 class="section-title">Ingredientes do Xarope</h2>
+      <div class="section-line"></div>
+    </div>
+
+    <div class="ingredients-grid">
+
+      <div class="ing-card full">
+        <div class="ing-dot"></div>
+        <div class="ing-amount ing-amount-sm">450–480ml</div>
+        <div>
+          <div class="ing-name">Xarope simples 3:2</div>
+          <div class="ing-note">3 partes de açúcar para 2 partes de água</div>
+        </div>
+      </div>
+
+      <div class="ing-card">
+        <div class="ing-dot"></div>
+        <div class="ing-amount">2ml</div>
+        <div>
+          <div class="ing-name">Essência (Passo 1)</div>
+        </div>
+      </div>
+
+      <div class="ing-card">
+        <div class="ing-dot"></div>
+        <div class="ing-amount">7,5g</div>
+        <div>
+          <div class="ing-name">Ácido cítrico</div>
+        </div>
+      </div>
+
+      <div class="ing-card">
+        <div class="ing-dot"></div>
+        <div class="ing-amount">1,5g</div>
+        <div>
+          <div class="ing-name">Ácido ascórbico</div>
+          <div class="ing-note">Vitamina C · antioxidante e conservante</div>
+        </div>
+      </div>
+
+      <div class="ing-card">
+        <div class="ing-dot"></div>
+        <div class="ing-amount">0,6g</div>
+        <div>
+          <div class="ing-name">Vanilina em pó</div>
+          <div class="ing-note">Ou 20 a 30ml de extrato de baunilha</div>
+        </div>
+      </div>
+
+      <div class="ing-card">
+        <div class="ing-dot"></div>
+        <div class="ing-amount">q.b.</div>
+        <div>
+          <div class="ing-name">Corante alimentar verde</div>
+          <div class="ing-note">Opcional · para obter a cor característica</div>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- PASSO A PASSO -->
+  <section class="section">
+    <div class="section-header">
+      <div class="section-marker">—</div>
+      <h2 class="section-title">Passo a Passo</h2>
+      <div class="section-line"></div>
+    </div>
+
+    <div class="steps">
+
+      <!-- FASE 1: ESSÊNCIA -->
+      <div class="step-phase-label">Passo 1 · A Essência (saborizante concentrado)</div>
+
+      <div class="step">
+        <div class="step-line"></div>
+        <div class="step-left"><div class="step-circle">1</div></div>
+        <div class="step-right">
+          <div class="step-title">Combine os óleos no frasco</div>
+          <div class="step-body">Em um frasco de 120ml, adicione o <strong>óleo de estragão</strong> e o <strong>óleo de limão</strong>.</div>
+        </div>
+      </div>
+
+      <div class="step">
+        <div class="step-line"></div>
+        <div class="step-left"><div class="step-circle">2</div></div>
+        <div class="step-right">
+          <div class="step-title">Complete com álcool e agite</div>
+          <div class="step-body">Complete o frasco com álcool até atingir a marca de <strong>120ml</strong>. Agite bem para misturar. A solução deve ficar efetivamente límpida.</div>
+          <div class="step-tag">a essência pode ser armazenada para uso posterior</div>
+        </div>
+      </div>
+
+      <!-- FASE 2: XAROPE -->
+      <div class="step-phase-label">Passo 2 · O Xarope da Soda</div>
+
+      <div class="step">
+        <div class="step-line"></div>
+        <div class="step-left"><div class="step-circle">3</div></div>
+        <div class="step-right">
+          <div class="step-title">Dissolva a baunilha</div>
+          <div class="step-body">Como a vanilina em pó não dissolve bem em água, coloque-a em um béquer com um pouco de <strong>álcool ou água morna</strong> até dissolver completamente. Pode-se usar o micro-ondas por alguns segundos, se necessário.</div>
+        </div>
+      </div>
+
+      <div class="step">
+        <div class="step-line"></div>
+        <div class="step-left"><div class="step-circle">4</div></div>
+        <div class="step-right">
+          <div class="step-title">Adicione a essência</div>
+          <div class="step-body">Adicione os <strong>2ml da essência de estragão</strong> à mistura de baunilha.</div>
+        </div>
+      </div>
+
+      <div class="step">
+        <div class="step-line"></div>
+        <div class="step-left"><div class="step-circle">5</div></div>
+        <div class="step-right">
+          <div class="step-title">Misture o xarope</div>
+          <div class="step-body">Adicione o xarope simples 3:2 até completar a marca de <strong>480ml</strong>.</div>
+        </div>
+      </div>
+
+      <div class="step">
+        <div class="step-line"></div>
+        <div class="step-left"><div class="step-circle">6</div></div>
+        <div class="step-right">
+          <div class="step-title">Adicione os ácidos</div>
+          <div class="step-body">Incorpore o <strong>ácido cítrico</strong> e o <strong>ácido ascórbico</strong>. Mexa bem até que todos os cristais desapareçam.</div>
+        </div>
+      </div>
+
+      <div class="step">
+        <div class="step-line"></div>
+        <div class="step-left"><div class="step-circle">7</div></div>
+        <div class="step-right">
+          <div class="step-title">Colorir (opcional)</div>
+          <div class="step-body">Se desejar o visual verde elétrico tradicional, adicione o <strong>corante verde</strong> neste momento.</div>
+        </div>
+      </div>
+
+      <!-- FASE 3: MONTAGEM -->
+      <div class="step-phase-label">Passo 3 · Montagem da Bebida</div>
+
+      <div class="step">
+        <div class="step-left"><div class="step-circle">8</div></div>
+        <div class="step-right">
+          <div class="step-title">Monte no copo</div>
+          <div class="step-body">Em um copo de <strong>240ml (8oz)</strong>, adicione <strong>190ml (6,5oz) de água gaseificada gelada</strong> e <strong>22 a 25ml do xarope</strong>. Mexa suavemente e, se desejar, decore com um ramo de estragão fresco.</div>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- NOTAS TÉCNICAS -->
+  <section class="section">
+    <div class="section-header">
+      <div class="section-marker">—</div>
+      <h2 class="section-title">Notas Técnicas</h2>
+      <div class="section-line"></div>
+    </div>
+
+    <div class="notes-grid">
+
+      <div class="note-card">
+        <div class="note-icon">🌿</div>
+        <div class="note-title">Sabor único</div>
+        <div class="note-body">A mistura de estragão, limão e baunilha cria um sabor complexo onde nenhum ingrediente individual é dominante, semelhante ao que ocorre com a Coca-Cola.</div>
+      </div>
+
+      <div class="note-card">
+        <div class="note-icon">🍋</div>
+        <div class="note-title">Variações</div>
+        <div class="note-body">Para uma bebida mais ácida, dobre a quantidade de ácido cítrico. Para um toque mais licoroso, adicione um pouco de erva-doce ou anis-estrelado à essência.</div>
+      </div>
+
+      <div class="note-card">
+        <div class="note-icon">🟢</div>
+        <div class="note-title">Cor natural</div>
+        <div class="note-body">Sem corante, a bebida é clara. O uso de ervas frescas pode dar uma cor verde momentânea, mas ela oxida e fica marrom em cerca de um dia.</div>
+      </div>
+
+      <div class="note-card">
+        <div class="note-icon">🫙</div>
+        <div class="note-title">Shelf life</div>
+        <div class="note-body">Essência concentrada (50% abv): muito estável em frasco fechado, longe da luz, dura anos sem deterioração microbiológica. Xarope Tarkuna pronto: refrigerado em frasco fechado, 3 a 4 semanas. O ratio 3:2 equivale a 1,5:1, menos concentrado que o xarope rico 2:1, e os aditivos orgânicos (vanilina, ácido ascórbico) reduzem o prazo em relação a um xarope puro. Refrigerante montado: consumir na hora, a carbonatação não se conserva após a mistura.</div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- MITOLOGIA -->
+  <section class="section">
+    <div class="section-header">
+      <div class="section-marker">—</div>
+      <h2 class="section-title">Mitologia</h2>
+      <div class="section-line"></div>
+    </div>
+
+    <div class="curiosity-block">
+      <div class="curiosity-label">Curiosidade</div>
+      <div class="curiosity-body">
+        <p>Um fato interessante é que os hititas, que eram uma tribo no norte da Turquia, tinham um deus chamado <strong>Tarḫunna</strong> (Tarhun, ou Teshub), que era o deus do clima (trovões, relâmpagos, chuva, nuvens e tempestades), como Zeus ou Thor. <em>Dracunculus</em>, o nome latino do estragão, significa <strong>pequeno dragão</strong>.</p>
+        <p>Na mitologia hitita, Illuyanka era um dragão morto por Teshub (Tarhun). O mito é encontrado no <em>Catalogue des Textes Hittites 321</em>, que apresenta duas versões.</p>
+        <p><strong>Na primeira versão</strong>, os dois deuses lutam e o dragão Illuyanka vence. Após sua derrota, Tarhun vai até a deusa Inaras para obter conselhos. Com a ajuda de Hupasiyas, um homem mortal com quem ela quer dormir, ela cria uma armadilha para o dragão usando grandes quantidades de comida e bebida para embebedar Illuyanka. Uma vez embriagado, o dragão é amarrado com cordas por Hupasiyas. O deus Tarhun então aparece e mata o dragão.</p>
+        <p><strong>Na segunda versão</strong>, mais uma vez Tarhun perde, e o dragão Illuyanka leva os olhos e o coração de Tarhun. Para se vingar, Tarhun se casa com a deusa Hebat e eles têm um filho a quem chamam de Sarruma, que cresce e se casa com a filha do dragão. O deus Tarhun ordena a seu filho que peça a Illuyanka seus olhos e coração de volta como presente de casamento, com o que o dragão concorda. Com os olhos e o coração restaurados, Tarhun vai lutar contra o dragão mais uma vez. Quando Tarhun está prestes a matar o dragão, Sarruma percebe que foi usado. Ele exige que seu pai tire sua vida junto com a de Illuyanka, e então Tarhun mata os dois com chuva intensa e raios. Esta versão da história é ilustrada em um relevo encontrado em Malatya (datado de 1050–850 a.C.) e está em exibição no Museu das Civilizações da Anatólia em Ancara, Turquia.</p>
+      </div>
+    </div>
+  </section>
+
+  <div class="source-block">
+    Baseado em Darcy O'Neil, Art Of Drink (YouTube). Receita original: patente soviética de 1986.
+  </div>
+
+  <footer class="page-footer">
+    <span class="footer-text">Tarkuna · Sodas · Artemisia dracunculus</span>
+    <span class="footer-sig">@seuOtto</span>
+  </footer>
+
+</div>
+</body>
+</html>
