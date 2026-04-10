@@ -16,6 +16,7 @@
     { "categoria": "licores", "slug": "flor-de-sabugueiro", "destaque": true  },
     { "categoria": "licores", "slug": "licor-de-cafe", "destaque": false },
     { "categoria": "xaropes", "slug": "xarope-de-manteiga", "destaque": false },
-    { "categoria": "coulis",  "slug": "coulis-amarena-frutas-vermelhas", "destaque": false }
+    { "categoria": "coulis",  "slug": "coulis-amarena-frutas-vermelhas", "destaque": false },
+    { "categoria": "sodas",  "slug": "tarkuna", "destaque": false }
   ]
 }
