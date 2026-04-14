@@ -1,0 +1,770 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<meta name="receita-categoria"        content="bitters">
+<meta name="receita-slug"             content="amaro-ruibarbo">
+<meta name="receita-nome"             content="Amaro Ruibarbo">
+<meta name="receita-subtitulo"        content="Maceração · Barril">
+<meta name="receita-descricao"        content="Amaro artesanal de ruibarbo, com amargor moderado e seco. Defumado e especiado, com caráter terroso e vegetal. Amadeirado e limpo.">
+<meta name="receita-rendimento"       content="variável">
+<meta name="receita-abv"              content="N/A">
+<meta name="receita-stat1-valor"      content="14 dias">
+<meta name="receita-stat1-label"      content="Maceração 1">
+<meta name="receita-stat2-valor"      content="24h">
+<meta name="receita-stat2-label"      content="Maceração 2">
+<meta name="receita-stat3-valor"      content="7 dias">
+<meta name="receita-stat3-label"      content="Barril">
+<meta name="receita-stat4-valor"      content="4 semanas">
+<meta name="receita-stat4-label"      content="Descanso">
+<meta name="receita-nome-cientifico"  content="">
+<meta name="receita-destaque"         content="false">
+
+<title>Amaro Ruibarbo — Portfólio Artesanal</title>
+
+<style>
+@import url('https://api.fontshare.com/v2/css?f[]=gambetta@300,400,600,300i,400i,600i&f[]=satoshi@300,400,500&display=swap');
+
+:root {
+  --bg:               #1C2B1A;
+  --bg-surface:       rgba(255,255,255,0.03);
+  --bg-surface-hover: rgba(255,255,255,0.056);
+  --text-primary:     #F5F0E8;
+  --text-secondary:   rgba(245,240,232,0.72);
+  --text-muted:       rgba(245,240,232,0.45);
+  --text-hint:        rgba(245,240,232,0.38);
+  --border-default:   rgba(160,98,42,0.25);
+  --border-emphasis:  rgba(160,98,42,0.50);
+  --border-subtle:    rgba(245,240,232,0.08);
+  /* Categoria 2 — Bitters e Amaros */
+  --accent-primary:   #A0622A;
+  --accent-light:     #D4A574;
+  --accent-border:    rgba(160,98,42,0.50);
+  --accent-bg:        rgba(160,98,42,0.08);
+}
+
+* { margin: 0; padding: 0; box-sizing: border-box; }
+
+body {
+  background: var(--bg);
+  font-family: 'Satoshi', 'Helvetica Neue', sans-serif;
+  color: var(--text-primary);
+  min-height: 100vh;
+}
+
+.page {
+  max-width: 860px;
+  margin: 0 auto;
+  padding: 0 24px 80px;
+}
+
+@keyframes fadeUp {
+  from { opacity: 0; transform: translateY(16px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+/* ── NAV ── */
+nav {
+  background: rgba(255,255,255,0.03);
+  border-bottom: 1px solid var(--border-subtle);
+  height: 64px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 40px;
+  position: sticky;
+  top: 0;
+  z-index: 10;
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+}
+
+.nav-brand { display: flex; align-items: baseline; gap: 12px; }
+
+.nav-logo {
+  font-family: 'Gambetta', 'Georgia', serif;
+  font-size: 18px;
+  font-weight: 400;
+  color: var(--text-primary);
+  letter-spacing: -0.02em;
+  text-decoration: none;
+}
+
+.nav-logo em { font-style: italic; color: var(--accent-primary); }
+
+.nav-tagline {
+  font-size: 10px;
+  font-weight: 500;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--text-hint);
+}
+
+.nav-links {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 12px;
+}
+
+.nav-link {
+  color: var(--text-muted);
+  text-decoration: none;
+  transition: color 0.2s;
+}
+
+.nav-link:hover { color: var(--text-primary); }
+.nav-sep { color: var(--text-hint); }
+.nav-current { color: var(--accent-primary); font-weight: 500; }
+
+/* ── HERO ── */
+.hero {
+  padding: 64px 0 48px;
+  display: grid;
+  grid-template-columns: 1fr;
+  align-items: end;
+  gap: 32px;
+  border-bottom: 1px solid var(--border-default);
+  margin-bottom: 56px;
+  animation: fadeUp 0.8s ease both;
+}
+
+.hero-label {
+  font-size: 10px;
+  font-weight: 500;
+  letter-spacing: 0.25em;
+  text-transform: uppercase;
+  color: var(--accent-primary);
+  margin-bottom: 16px;
+}
+
+.hero h1 {
+  font-family: 'Gambetta', 'Georgia', serif;
+  font-size: clamp(38px, 6vw, 58px);
+  font-weight: 300;
+  line-height: 1.05;
+  color: var(--text-primary);
+  letter-spacing: -0.02em;
+}
+
+.hero h1 em { font-style: italic; color: var(--accent-light); }
+
+.hero-sub {
+  font-family: 'Satoshi', 'Helvetica Neue', sans-serif;
+  font-size: 13px;
+  font-weight: 300;
+  color: var(--text-muted);
+  margin-top: 16px;
+  line-height: 1.65;
+  max-width: 420px;
+}
+
+/* ── STATS ROW ── */
+.stats {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 1px;
+  background: var(--border-default);
+  border: 1px solid var(--border-default);
+  border-radius: 16px;
+  overflow: hidden;
+  margin-bottom: 56px;
+  animation: fadeUp 0.8s 0.1s ease both;
+}
+
+.stat {
+  background: rgba(255,255,255,0.025);
+  padding: 16px;
+  text-align: center;
+}
+
+.stat-value {
+  font-family: 'Gambetta', 'Georgia', serif;
+  font-size: 24px;
+  font-weight: 400;
+  color: var(--accent-light);
+  line-height: 1;
+  margin-bottom: 6px;
+}
+
+.stat-label {
+  font-size: 10px;
+  font-weight: 500;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--text-hint);
+}
+
+/* ── SEÇÃO ── */
+.section { margin-bottom: 56px; }
+
+.section-header {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  margin-bottom: 32px;
+}
+
+.section-marker {
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  background: var(--accent-primary);
+  color: var(--bg);
+  font-size: 11px;
+  font-weight: 500;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  font-family: 'Satoshi', sans-serif;
+}
+
+.section-title {
+  font-family: 'Gambetta', 'Georgia', serif;
+  font-size: 26px;
+  font-weight: 400;
+  color: var(--text-primary);
+  letter-spacing: 0.01em;
+}
+
+.section-line {
+  flex: 1;
+  height: 1px;
+  background: var(--border-default);
+}
+
+/* ── INGREDIENTES ── */
+.ingredients-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 8px;
+}
+
+.ingredients-phase {
+  grid-column: 1 / -1;
+  font-size: 10px;
+  font-weight: 500;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--accent-primary);
+  padding: 8px 0 4px;
+  border-bottom: 1px solid var(--border-subtle);
+  margin-bottom: 4px;
+}
+
+.ing-card {
+  background: var(--bg-surface);
+  border: 1px solid var(--border-default);
+  border-radius: 8px;
+  padding: 16px;
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  transition: background 0.2s;
+}
+
+.ing-card:hover { background: var(--bg-surface-hover); }
+
+.ing-card.highlight {
+  border-color: var(--accent-border);
+  background: var(--accent-bg);
+  grid-column: 1 / -1;
+}
+
+.ing-dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: var(--accent-primary);
+  flex-shrink: 0;
+}
+
+.ing-amount {
+  font-family: 'Gambetta', 'Georgia', serif;
+  font-size: 20px;
+  font-weight: 400;
+  color: var(--accent-light);
+  line-height: 1;
+  min-width: 56px;
+  flex-shrink: 0;
+}
+
+.ing-name {
+  font-size: 13px;
+  font-weight: 500;
+  color: var(--text-primary);
+  line-height: 1.3;
+}
+
+.ing-note {
+  font-size: 11px;
+  font-weight: 400;
+  color: var(--text-muted);
+  margin-top: 2px;
+}
+
+/* ── PASSO A PASSO ── */
+.steps { display: flex; flex-direction: column; }
+
+.step {
+  display: grid;
+  grid-template-columns: 48px 1fr;
+  position: relative;
+}
+
+.step:not(:last-child) .step-line {
+  position: absolute;
+  left: 24px;
+  top: 40px;
+  bottom: 0;
+  width: 2px;
+  background: var(--border-default);
+}
+
+.step-left {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding-top: 4px;
+  position: relative;
+  z-index: 1;
+}
+
+.step-circle {
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  border: 2px solid var(--accent-primary);
+  background: var(--bg);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: 'Satoshi', 'Helvetica Neue', sans-serif;
+  font-size: 13px;
+  font-weight: 500;
+  line-height: 1;
+  color: var(--accent-primary);
+  flex-shrink: 0;
+  user-select: none;
+}
+
+.step-right { padding: 2px 0 40px 16px; }
+
+.step-title {
+  font-family: 'Gambetta', 'Georgia', serif;
+  font-size: 18px;
+  font-weight: 600;
+  color: var(--text-primary);
+  margin-bottom: 8px;
+  line-height: 1.2;
+}
+
+.step-body {
+  font-size: 14px;
+  font-weight: 300;
+  color: var(--text-secondary);
+  line-height: 1.75;
+}
+
+.step-body strong { color: var(--accent-light); font-weight: 500; }
+
+.step-tag {
+  display: inline-block;
+  background: var(--accent-bg);
+  border: 1px solid var(--accent-border);
+  color: var(--accent-light);
+  font-size: 10px;
+  font-weight: 500;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  padding: 4px 8px;
+  border-radius: 4px;
+  margin-top: 10px;
+}
+
+/* ── NOTAS TÉCNICAS ── */
+.notes-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 8px;
+}
+
+.note-card {
+  background: var(--bg-surface);
+  border: 1px solid var(--border-default);
+  border-radius: 8px;
+  padding: 16px;
+}
+
+.note-card.warn {
+  border-color: rgba(160,98,42,0.45);
+  background: rgba(160,98,42,0.05);
+}
+
+.note-icon { font-size: 16px; margin-bottom: 8px; }
+
+.note-title {
+  font-size: 11px;
+  font-weight: 500;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--accent-primary);
+  margin-bottom: 6px;
+}
+
+.note-body {
+  font-size: 12px;
+  font-weight: 300;
+  color: var(--text-muted);
+  line-height: 1.65;
+}
+
+/* ── FOOTER ── */
+.page-footer {
+  border-top: 1px solid var(--border-default);
+  padding-top: 32px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 8px;
+}
+
+.footer-text {
+  font-size: 11px;
+  color: var(--text-hint);
+  letter-spacing: 0.08em;
+}
+
+.footer-sig {
+  font-family: 'Gambetta', 'Georgia', serif;
+  font-size: 14px;
+  font-style: italic;
+  color: rgba(160,98,42,0.50);
+}
+
+/* ── RESPONSIVIDADE ── */
+@media (max-width: 600px) {
+  nav { padding: 0 20px; }
+  .nav-tagline { display: none; }
+  .nav-sep, .nav-current { display: none; }
+  .nav-links { gap: 0; }
+  .nav-link-categoria { display: none; }
+  .hero { grid-template-columns: 1fr; }
+  .stats { grid-template-columns: repeat(2, 1fr) !important; }
+  .ingredients-grid { grid-template-columns: 1fr; }
+  .ing-card.highlight { grid-column: 1; }
+  .notes-grid { grid-template-columns: 1fr; }
+}
+</style>
+</head>
+<body>
+
+<nav>
+  <div class="nav-brand">
+    <a href="../" class="nav-logo">Alta <em>Coquetelaria</em></a>
+    <div class="nav-tagline">Portfólio Artesanal</div>
+  </div>
+  <div class="nav-links">
+    <a href="../" class="nav-link nav-link-inicio">Início</a>
+    <span class="nav-sep">›</span>
+    <a href="./" class="nav-link nav-link-categoria">Bitters</a>
+    <span class="nav-sep">›</span>
+    <span class="nav-current">Amaro Ruibarbo</span>
+  </div>
+</nav>
+
+<div class="page">
+
+  <header class="hero">
+    <div>
+      <div class="hero-label">Bitter · Amaro</div>
+      <h1>Amaro<br><em>Ruibarbo</em></h1>
+      <p class="hero-sub">Amaro artesanal de ruibarbo, com amargor moderado e seco. Defumado e especiado, com caráter terroso e vegetal. Amadeirado e limpo.</p>
+    </div>
+  </header>
+
+  <div class="stats">
+    <div class="stat">
+      <div class="stat-value">14 dias</div>
+      <div class="stat-label">Maceração 1</div>
+    </div>
+    <div class="stat">
+      <div class="stat-value">24h</div>
+      <div class="stat-label">Maceração 2</div>
+    </div>
+    <div class="stat">
+      <div class="stat-value">7 dias</div>
+      <div class="stat-label">Barril</div>
+    </div>
+    <div class="stat">
+      <div class="stat-value">4 sem</div>
+      <div class="stat-label">Descanso</div>
+    </div>
+  </div>
+
+  <section class="section">
+    <div class="section-header">
+      <div class="section-marker">—</div>
+      <h2 class="section-title">Ingredientes</h2>
+      <div class="section-line"></div>
+    </div>
+
+    <div class="ingredients-grid">
+
+      <div class="ing-card highlight">
+        <div class="ing-dot"></div>
+        <div class="ing-amount">20g</div>
+        <div>
+          <div class="ing-name">Ruibarbo</div>
+        </div>
+      </div>
+
+      <div class="ingredients-phase">Botânicos</div>
+
+      <div class="ing-card">
+        <div class="ing-dot"></div>
+        <div class="ing-amount">0,25g</div>
+        <div>
+          <div class="ing-name">Cardamomo negro</div>
+        </div>
+      </div>
+
+      <div class="ing-card">
+        <div class="ing-dot"></div>
+        <div class="ing-amount">4g</div>
+        <div>
+          <div class="ing-name">Tulipwood</div>
+        </div>
+      </div>
+
+      <div class="ing-card">
+        <div class="ing-dot"></div>
+        <div class="ing-amount">1g</div>
+        <div>
+          <div class="ing-name">Genciana</div>
+        </div>
+      </div>
+
+      <div class="ing-card">
+        <div class="ing-dot"></div>
+        <div class="ing-amount">3g</div>
+        <div>
+          <div class="ing-name">Casca de laranja</div>
+        </div>
+      </div>
+
+      <div class="ing-card">
+        <div class="ing-dot"></div>
+        <div class="ing-amount">3g</div>
+        <div>
+          <div class="ing-name">Cinchona</div>
+        </div>
+      </div>
+
+      <div class="ing-card">
+        <div class="ing-dot"></div>
+        <div class="ing-amount">0,25g</div>
+        <div>
+          <div class="ing-name">Puxuri</div>
+        </div>
+      </div>
+
+      <div class="ing-card">
+        <div class="ing-dot"></div>
+        <div class="ing-amount">0,25g</div>
+        <div>
+          <div class="ing-name">Pimenta dioica</div>
+          <div class="ing-note">Jamaica</div>
+        </div>
+      </div>
+
+      <div class="ing-card">
+        <div class="ing-dot"></div>
+        <div class="ing-amount">0,75g</div>
+        <div>
+          <div class="ing-name">Canela</div>
+        </div>
+      </div>
+
+      <div class="ing-card">
+        <div class="ing-dot"></div>
+        <div class="ing-amount">0,1g</div>
+        <div>
+          <div class="ing-name">Cravo</div>
+        </div>
+      </div>
+
+      <div class="ing-card">
+        <div class="ing-dot"></div>
+        <div class="ing-amount">0,25g</div>
+        <div>
+          <div class="ing-name">Flor de sabugueiro</div>
+        </div>
+      </div>
+
+      <div class="ing-card">
+        <div class="ing-dot"></div>
+        <div class="ing-amount">3g</div>
+        <div>
+          <div class="ing-name">Casca de cereja</div>
+        </div>
+      </div>
+
+      <div class="ingredients-phase">Base alcoólica</div>
+
+      <div class="ing-card">
+        <div class="ing-dot"></div>
+        <div class="ing-amount">350ml</div>
+        <div>
+          <div class="ing-name">Álcool de cereais 92%</div>
+        </div>
+      </div>
+
+      <div class="ing-card">
+        <div class="ing-dot"></div>
+        <div class="ing-amount">100ml</div>
+        <div>
+          <div class="ing-name">Grappa</div>
+        </div>
+      </div>
+
+      <div class="ingredients-phase">Infusão aquosa e xarope</div>
+
+      <div class="ing-card">
+        <div class="ing-dot"></div>
+        <div class="ing-amount">750ml</div>
+        <div>
+          <div class="ing-name">Água fervente</div>
+          <div class="ing-note">Para a segunda extração dos sólidos</div>
+        </div>
+      </div>
+
+      <div class="ing-card">
+        <div class="ing-dot"></div>
+        <div class="ing-amount">42g</div>
+        <div>
+          <div class="ing-name">Casca de laranja fresca</div>
+          <div class="ing-note">Adicionada após resfriar a infusão aquosa</div>
+        </div>
+      </div>
+
+      <div class="ing-card">
+        <div class="ing-dot"></div>
+        <div class="ing-amount">250g</div>
+        <div>
+          <div class="ing-name">Açúcar demerara</div>
+          <div class="ing-note">Para o xarope</div>
+        </div>
+      </div>
+
+      <div class="ing-card">
+        <div class="ing-dot"></div>
+        <div class="ing-amount">80g</div>
+        <div>
+          <div class="ing-name">Açúcar branco</div>
+          <div class="ing-note">Para o xarope</div>
+        </div>
+      </div>
+
+      <div class="ing-card">
+        <div class="ing-dot"></div>
+        <div class="ing-amount">10g</div>
+        <div>
+          <div class="ing-name">Melaço</div>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="section-header">
+      <div class="section-marker">—</div>
+      <h2 class="section-title">Passo a Passo</h2>
+      <div class="section-line"></div>
+    </div>
+
+    <div class="steps">
+
+      <div class="step">
+        <div class="step-line"></div>
+        <div class="step-left"><div class="step-circle">1</div></div>
+        <div class="step-right">
+          <div class="step-title">Maceração alcoólica</div>
+          <div class="step-body">Reúna todos os botânicos em um recipiente hermético de vidro. Adicione <strong>350ml de álcool de cereais 92%</strong> e <strong>100ml de grappa</strong>. Tampe, reserve em local seco ao abrigo da luz solar e deixe macerar por <strong>14 dias</strong>. Filtre, mas não descarte os sólidos.</div>
+          <div class="step-tag">14 dias · local escuro</div>
+        </div>
+      </div>
+
+      <div class="step">
+        <div class="step-line"></div>
+        <div class="step-left"><div class="step-circle">2</div></div>
+        <div class="step-right">
+          <div class="step-title">Infusão aquosa dos sólidos</div>
+          <div class="step-body">Coloque os sólidos que sobraram em outro recipiente e adicione <strong>750ml de água fervente</strong>. Depois de frio, adicione <strong>42g de casca de laranja fresca</strong>, deixe macerar por <strong>24 horas</strong> e filtre.</div>
+          <div class="step-tag">24h · laranja só após resfriar</div>
+        </div>
+      </div>
+
+      <div class="step">
+        <div class="step-line"></div>
+        <div class="step-left"><div class="step-circle">3</div></div>
+        <div class="step-right">
+          <div class="step-title">Xarope e montagem</div>
+          <div class="step-body">Faça um xarope simples com <strong>250g de açúcar demerara</strong>, <strong>80g de açúcar branco</strong>, <strong>10g de melaço</strong> e a infusão de água e especiarias. Misture <strong>450ml da maceração alcoólica</strong> com <strong>580ml do xarope</strong>.</div>
+        </div>
+      </div>
+
+      <div class="step">
+        <div class="step-line"></div>
+        <div class="step-left"><div class="step-circle">4</div></div>
+        <div class="step-right">
+          <div class="step-title">Maturação em barril <em style="font-size:12px;font-weight:300;color:var(--text-muted);font-style:italic;letter-spacing:0;">— opcional</em></div>
+          <div class="step-body">Para um toque especial, coloque o amaro em um <strong>barril de carvalho de 1L</strong> e deixe maturando por <strong>7 dias</strong>.</div>
+          <div class="step-tag">barril de carvalho · 1L · 7 dias</div>
+        </div>
+      </div>
+
+      <div class="step">
+        <div class="step-left"><div class="step-circle">5</div></div>
+        <div class="step-right">
+          <div class="step-title">Engarrafamento e descanso</div>
+          <div class="step-body">Engarrafe e deixe descansar por <strong>4 semanas</strong>.</div>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="section-header">
+      <div class="section-marker">—</div>
+      <h2 class="section-title">Notas Técnicas</h2>
+      <div class="section-line"></div>
+    </div>
+
+    <div class="notes-grid">
+      <div class="note-card warn">
+        <div class="note-icon">⚠️</div>
+        <div class="note-title">Álcool de alta graduação</div>
+        <div class="note-body">A maceração usa álcool de cereais a 92%. Mantenha longe de fontes de calor e chamas durante todo o processo. Recipiente hermético de vidro é obrigatório.</div>
+      </div>
+      <div class="note-card">
+        <div class="note-icon">🫙</div>
+        <div class="note-title">Shelf life</div>
+        <div class="note-body">Estável em temperatura ambiente em garrafa fechada, longe da luz. A presença de álcool de alta graduação confere boa estabilidade microbiológica ao produto final.</div>
+      </div>
+    </div>
+  </section>
+
+  <footer class="page-footer">
+    <span class="footer-text">Amaro Ruibarbo · Bitters e Amaros</span>
+    <span class="footer-sig">@seuOtto</span>
+  </footer>
+
+</div>
+</body>
+</html>
